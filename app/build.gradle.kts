@@ -1,6 +1,8 @@
 plugins {
+    //id("com.example.cartopuntos")
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -59,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,4 +69,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    implementation("io.github.shashank02051997:FancyToast:2.0.1")
+    implementation("com.google.android.material:material:1.9.0")
+
 }
