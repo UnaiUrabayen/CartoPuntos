@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.cartopuntos"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.cartopuntos"
