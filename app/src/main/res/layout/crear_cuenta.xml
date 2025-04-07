@@ -10,6 +10,19 @@
     android:padding="16dp">
 
 
+    <ImageView
+        android:id="@+id/imb_vovler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_tituloCartoPuntos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back_24px" />
+
     <TextView
         android:id="@+id/tv_tituloCartoPuntos"
         android:layout_width="273dp"
@@ -45,14 +58,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_tituloCartoPuntos" />
 
     <EditText
-        android:id="@+id/ed_EmailUsuario"
+        android:id="@+id/ed_NombreUsuario"
         android:layout_width="329dp"
         android:layout_height="38dp"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="82dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/rounded_corners"
-        android:hint="@string/email"
+        android:hint="@string/nombre_de_usuario"
         android:textAlignment="center"
         android:textColorHighlight="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,11 +73,26 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <EditText
+        android:id="@+id/ed_EmailUsuario"
+        android:layout_width="329dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/rounded_corners"
+        android:hint="@string/email"
+        android:textAlignment="center"
+        android:textColorHighlight="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_NombreUsuario" />
+
+    <EditText
         android:id="@+id/ed_ContraseniaUsuario"
         android:layout_width="329dp"
         android:layout_height="38dp"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/rounded_corners"
         android:hint="@string/contrase_a"
@@ -79,14 +107,15 @@
         android:layout_width="209dp"
         android:layout_height="35dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="113dp"
         android:background="@drawable/rounded_corners_btn"
-        android:text="@string/iniciar_sesion"
+        android:text="@string/crear_cuenta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_ContraseniaUsuario" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

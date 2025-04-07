@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores por defecto de Android Studio -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- ======================= -->
+    <!--      Modo Claro         -->
+    <!-- ======================= -->
+    <color name="cp_light_primary">#6A57BD</color> <!-- Fondo / elementos principales -->
+    <color name="cp_light_button">#AB51FF</color>  <!-- Botones -->
+    <color name="cp_light_text">#FFFFFF</color>    <!-- Texto -->
+
+    <!-- ======================= -->
+    <!--      Modo Oscuro        -->
+    <!-- ======================= -->
+    <color name="cp_dark_primary">#5D4970</color>
+    <color name="cp_dark_button">#7D46B0</color>
+    <color name="cp_dark_text">#000000</color>
 </resources>
