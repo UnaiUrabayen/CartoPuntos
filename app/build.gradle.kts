@@ -66,6 +66,8 @@ dependencies {
     //Cambiar las versiones para la version de Kotlin
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
