@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
+    <!-- Titulo -->
     <TextView
         android:id="@+id/tv_tituloCartoPuntos"
         android:layout_width="273dp"
@@ -23,14 +23,14 @@
         android:text="@string/carto_puntos"
         android:textAlignment="center"
         android:textColor="@color/cp_light_text"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <!-- Línea separadora -->
     <View
         android:id="@+id/view"
         android:layout_width="200dp"
@@ -44,6 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tituloCartoPuntos" />
 
+    <!-- EditText para Email -->
     <EditText
         android:id="@+id/ed_EmailUsuario"
         android:layout_width="329dp"
@@ -53,12 +54,16 @@
         android:layout_marginEnd="25dp"
         android:background="@drawable/rounded_corners"
         android:hint="@string/email"
-        android:textAlignment="center"
-        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:autofillHints=""
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
+    <!-- EditText para Contraseña -->
     <EditText
         android:id="@+id/ed_ContraseniaUsuario"
         android:layout_width="329dp"
@@ -68,12 +73,16 @@
         android:layout_marginEnd="25dp"
         android:background="@drawable/rounded_corners"
         android:hint="@string/contrase_a"
-        android:textAlignment="center"
-        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:autofillHints=""
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_EmailUsuario" />
 
+    <!-- Botón para iniciar sesión -->
     <Button
         android:id="@+id/btn_crearCuenta"
         android:layout_width="209dp"
@@ -87,6 +96,5 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_ContraseniaUsuario" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

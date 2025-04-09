@@ -11,7 +11,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.cartopuntos"
-        minSdk = 24
+        minSdk = 25
+
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -62,6 +63,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
+    //Cambiar las versiones para la version de Kotlin
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,7 +74,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation("androidx.cardview:cardview:1.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")

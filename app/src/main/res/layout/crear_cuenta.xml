@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +8,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <ImageView
         android:id="@+id/imb_vovler"
         android:layout_width="wrap_content"
@@ -17,6 +15,7 @@
         android:layout_marginStart="19dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
+        android:contentDescription="@string/flecha_para_volver_hacia_atras"
         app:layout_constraintEnd_toStartOf="@+id/tv_tituloCartoPuntos"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,13 +35,12 @@
         android:text="@string/carto_puntos"
         android:textAlignment="center"
         android:textColor="@color/cp_light_text"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <View
         android:id="@+id/view"
@@ -57,6 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tituloCartoPuntos" />
 
+    <!-- EditText para nombre de usuario -->
     <EditText
         android:id="@+id/ed_NombreUsuario"
         android:layout_width="329dp"
@@ -64,14 +63,18 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="82dp"
         android:layout_marginEnd="25dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_corners"
         android:hint="@string/nombre_de_usuario"
-        android:textAlignment="center"
-        android:textColorHighlight="@color/black"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
+    <!-- EditText para email -->
     <EditText
         android:id="@+id/ed_EmailUsuario"
         android:layout_width="329dp"
@@ -79,14 +82,18 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="25dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_corners"
         android:hint="@string/email"
-        android:textAlignment="center"
-        android:textColorHighlight="@color/black"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_NombreUsuario" />
 
+    <!-- EditText para contraseña -->
     <EditText
         android:id="@+id/ed_ContraseniaUsuario"
         android:layout_width="329dp"
@@ -94,18 +101,22 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="25dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_corners"
         android:hint="@string/contrase_a"
-        android:textAlignment="center"
-        android:textColorHighlight="@color/black"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_EmailUsuario" />
 
+    <!-- Botón para crear cuenta -->
     <Button
         android:id="@+id/btn_crearCuenta"
-        android:layout_width="209dp"
-        android:layout_height="35dp"
+        android:layout_width="228dp"
+        android:layout_height="60dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="113dp"
@@ -115,7 +126,5 @@
         app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_ContraseniaUsuario" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
