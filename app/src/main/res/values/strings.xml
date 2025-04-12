@@ -7,4 +7,5 @@
     <string name="carto_puntos">Carto Puntos</string>
     <string name="iniciar_sesion">iniciar Sesion</string>
     <string name="flecha_para_volver_hacia_atras">flecha para volver hacia atras</string>
+    <string name="no_tienes_cuenta_crear_cuenta">¿No tienes cuenta? Crear cuenta</string>
 </resources>

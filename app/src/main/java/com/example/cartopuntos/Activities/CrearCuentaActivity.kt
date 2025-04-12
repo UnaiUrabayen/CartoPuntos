@@ -2,13 +2,14 @@ package com.example.cartopuntos.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cartopuntos.Model.Service.UsuarioService
 import com.example.cartopuntos.R
-import android.util.Patterns
 
 class CrearCuentaActivity : AppCompatActivity() {
 
@@ -29,7 +30,13 @@ class CrearCuentaActivity : AppCompatActivity() {
         edContraseniaUsuario = findViewById(R.id.ed_ContraseniaUsuario)
         btnCrearCuenta = findViewById(R.id.btn_crearCuenta)
 
-        // Acción al hacer clic en el botón
+        // Configurar botón de volver (ImageView)
+        val imbVolver = findViewById<ImageView>(R.id.imb_vovler)
+        imbVolver.setOnClickListener {
+            finish() // Cierra esta activity y vuelve a la anterior (Iniciar sesión)
+        }
+
+        // Acción al hacer clic en el botón de crear cuenta
         btnCrearCuenta.setOnClickListener {
             val nombreUsuario = edNombreUsuario.text.toString().trim()
             val email = edEmailUsuario.text.toString().trim()
@@ -47,7 +54,7 @@ class CrearCuentaActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Validación de la contraseña (opcional, puedes añadir más reglas según sea necesario)
+            // Validación de la contraseña
             if (contrasena.length < 6) {
                 Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -57,11 +64,9 @@ class CrearCuentaActivity : AppCompatActivity() {
             usuarioService.crearUsuario(nombreUsuario, email, contrasena) { success, message ->
                 if (success) {
                     Toast.makeText(this, "Cuenta creada exitosamente.", Toast.LENGTH_SHORT).show()
-                    // Aquí puedes realizar la navegación a la siguiente actividad
-                    // Por ejemplo:
-                     val intent = Intent(this, EscogerJuego::class.java)
-                     startActivity(intent)
-                     finish()
+                    val intent = Intent(this, EscogerJuego::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
                 }

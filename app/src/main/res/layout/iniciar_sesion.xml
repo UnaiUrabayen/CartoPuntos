@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cp_light_primary"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp" android:layout_width="match_parent">
 
     <!-- Titulo -->
     <TextView
@@ -52,13 +51,13 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="25dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_corners"
         android:hint="@string/email"
-        android:textColorHint="@color/gray"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:autofillHints=""
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -71,13 +70,13 @@
         android:layout_marginStart="41dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="25dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_corners"
         android:hint="@string/contrase_a"
-        android:textColorHint="@color/gray"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:autofillHints=""
         android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_EmailUsuario" />
@@ -88,7 +87,7 @@
         android:layout_width="209dp"
         android:layout_height="35dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="113dp"
         android:background="@drawable/rounded_corners_btn"
         android:text="@string/iniciar_sesion"
@@ -96,5 +95,27 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_ContraseniaUsuario" />
+
+    <TextView
+        android:id="@+id/tv_crearCuenta"
+        android:layout_width="229dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="62dp"
+        android:autoLink="none"
+        android:ellipsize="none"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/no_tienes_cuenta_crear_cuenta"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_crearCuenta" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
