@@ -44,8 +44,8 @@ class IniciarSesionActivity : AppCompatActivity() {
             usuarioService.iniciarSesion(email, contrasena) { success, message ->
                 if (success) {
                     Toast.makeText(this, "Inicio de sesión exitoso.", Toast.LENGTH_SHORT).show()
-                    // startActivity(Intent(this, MainActivity::class.java))
-                    // finish()
+                     startActivity(Intent(this, EscogerJuego::class.java))
+                     finish()
                 } else {
                     Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
                 }

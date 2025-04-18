@@ -8,4 +8,8 @@
     <string name="iniciar_sesion">iniciar Sesion</string>
     <string name="flecha_para_volver_hacia_atras">flecha para volver hacia atras</string>
     <string name="no_tienes_cuenta_crear_cuenta">¿No tienes cuenta? Crear cuenta</string>
+    <string name="selecciona_el_juego_al_que_deseas_jugar">Selecciona el juego al que deseas jugar</string>
+    <string name="boton_que_te_dejara_juagar_al_mus">boton que te dejara juagar al mus</string>
+    <string name="boton_que_te_dejara_juagar_a_magic">boton que te dejara juagar a magic</string>
+    <string name="mus">MUS</string>
 </resources>

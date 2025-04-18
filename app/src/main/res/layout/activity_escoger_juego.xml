@@ -3,8 +3,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/cp_light_primary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.EscogerJuego">
+    <!-- Titulo -->
+    <TextView
+        android:id="@+id/tv_tituloCartoPuntos"
+        android:layout_width="273dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="16dp"
+        android:allowUndo="true"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/carto_puntos"
+        android:textAlignment="center"
+        android:textColor="@color/cp_light_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Línea separadora -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="90dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tituloCartoPuntos" />
+
+    <TextView
+        android:id="@+id/tv_explicativo"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="34dp"
+        android:textSize="19sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="@string/selecciona_el_juego_al_que_deseas_jugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <ImageButton
+        android:id="@+id/imb_magic"
+        android:layout_width="186dp"
+        android:layout_height="402dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="67dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imb_mus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
+        app:srcCompat="@mipmap/magic_the_gathering_logo"
+        android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic" />
+
+    <ImageButton
+        android:id="@+id/imb_mus"
+        android:layout_width="186dp"
+        android:layout_height="402dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="67dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imb_magic"
+        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
+        app:srcCompat="@mipmap/tapete"
+        android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus" />
+
+    <TextView
+        android:id="@+id/tv_mus_btn"
+        android:layout_width="47dp"
+        android:layout_height="106dp"
+        android:rotation="-90"
+        android:text="@string/mus"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="342dp"
+        tools:layout_editor_absoluteY="411dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/account_circle_24px"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="3dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
