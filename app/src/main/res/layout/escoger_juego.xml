@@ -6,7 +6,7 @@
     android:background="@color/cp_light_primary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.EscogerJuego">
+    tools:context=".activity_mus.EscogerJuego">
     <!-- Titulo -->
     <TextView
         android:id="@+id/tv_tituloCartoPuntos"
@@ -68,13 +68,13 @@
         android:layout_marginBottom="67dp"
         android:adjustViewBounds="true"
         android:background="@null"
+        android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imb_mus"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
-        app:srcCompat="@mipmap/magic_the_gathering_logo"
-        android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic" />
+        app:srcCompat="@mipmap/magic_the_gathering_logo" />
 
     <ImageButton
         android:id="@+id/imb_mus"
@@ -85,35 +85,27 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="67dp"
         android:adjustViewBounds="true"
-        android:background="@null"
+        android:background="@mipmap/tapete_mus"
+        android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imb_magic"
         app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
-        app:srcCompat="@mipmap/tapete"
-        android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus" />
-
-    <TextView
-        android:id="@+id/tv_mus_btn"
-        android:layout_width="47dp"
-        android:layout_height="106dp"
-        android:rotation="-90"
-        android:text="@string/mus"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="342dp"
-        tools:layout_editor_absoluteY="411dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imgb_btn_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/account_circle_24px"
-        tools:layout_editor_absoluteX="352dp"
-        tools:layout_editor_absoluteY="3dp" />
+        android:contentDescription="@string/boton_que_te_lleva_al_usuario" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

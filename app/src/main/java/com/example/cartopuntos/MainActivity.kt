@@ -3,8 +3,7 @@ package com.example.cartopuntos
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cartopuntos.Activities.CrearCuentaActivity
-import com.example.cartopuntos.Activities.IniciarSesionActivity
+import com.example.cartopuntos.activity_mus.IniciarSesionActivity
 
 
 class MainActivity : AppCompatActivity() {

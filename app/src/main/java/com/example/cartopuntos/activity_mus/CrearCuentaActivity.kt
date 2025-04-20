@@ -1,4 +1,4 @@
-package com.example.cartopuntos.Activities
+package com.example.cartopuntos.activity_mus
 
 import android.content.Intent
 import android.os.Bundle
