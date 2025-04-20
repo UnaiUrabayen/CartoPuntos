@@ -21,7 +21,7 @@ class CrearCuentaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.crear_cuenta)
+        setContentView(R.layout.view_crear_cuenta)
 
         // Inicializar las vistas
         usuarioService = UsuarioService()

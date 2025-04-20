@@ -25,7 +25,7 @@ class IniciarSesionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.iniciar_sesion)
+        setContentView(R.layout.view_iniciar_sesion)
 
         edEmailUsuario = findViewById(R.id.ed_EmailUsuario)
         edContraseniaUsuario = findViewById(R.id.ed_ContraseniaUsuario)

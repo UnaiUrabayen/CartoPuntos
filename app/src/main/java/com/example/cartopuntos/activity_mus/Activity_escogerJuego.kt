@@ -10,7 +10,7 @@ class Activity_escogerJuego : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.escoger_juego) // Asegúrate de que este sea el nombre de tu layout XML
+        setContentView(R.layout.view_escoger_juego) // Asegúrate de que este sea el nombre de tu layout XML
 
         val btnUsuario: ImageButton = findViewById(R.id.imgb_btn_usuario)
         val btnMagic: ImageButton = findViewById(R.id.imb_magic)
