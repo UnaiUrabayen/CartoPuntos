@@ -47,13 +47,13 @@
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="34dp"
-        android:textSize="19sp"
+        android:text="@string/selecciona_el_juego_al_que_deseas_jugar"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="19sp"
         android:textStyle="bold"
-        android:text="@string/selecciona_el_juego_al_que_deseas_jugar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -63,9 +63,9 @@
         android:layout_width="186dp"
         android:layout_height="402dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="57dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="40dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic"
@@ -83,7 +83,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="40dp"
         android:adjustViewBounds="true"
         android:background="@mipmap/tapete_mus"
         android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus"
@@ -91,8 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imb_magic"
-        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo" />
 
     <ImageButton
         android:id="@+id/imgb_btn_usuario"

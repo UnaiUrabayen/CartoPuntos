@@ -13,4 +13,6 @@
     <string name="boton_que_te_dejara_juagar_a_magic">boton que te dejara juagar a magic</string>
     <string name="mus">MUS</string>
     <string name="boton_que_te_lleva_al_usuario">boton que te lleva al usuario</string>
+    <string name="recuerdame">Recuerdame</string>
+    <string name="mantener_sesi_n_iniciada">Mantener sesión iniciada</string>
 </resources>
