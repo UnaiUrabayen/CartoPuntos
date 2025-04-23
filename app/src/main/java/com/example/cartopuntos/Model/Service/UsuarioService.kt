@@ -66,13 +66,27 @@ class UsuarioService {
     }
 
     // Función para iniciar sesión con email y contraseña
-    fun iniciarSesion(email: String, contrasena: String, onComplete: (Boolean, String?) -> Unit) {
+    fun iniciarSesion(email: String, contrasena: String, onComplete: (Boolean, String?, String?) -> Unit) {
         auth.signInWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    onComplete(true, null) // Inicio de sesión exitoso
+                    // Obtener el nombre del usuario desde Firestore
+                    db.collection("usuarios")
+                        .document(email)  // Usamos el email como ID de documento
+                        .get()
+                        .addOnSuccessListener { document ->
+                            if (document.exists()) {
+                                val nombreUsuario = document.getString("nombreUsuario")
+                                onComplete(true, null, nombreUsuario)
+                            } else {
+                                onComplete(true, "Usuario no encontrado en Firestore", null)
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            onComplete(false, exception.message, null)
+                        }
                 } else {
-                    onComplete(false, task.exception?.message) // Error al iniciar sesión
+                    onComplete(false, task.exception?.message, null)
                 }
             }
     }

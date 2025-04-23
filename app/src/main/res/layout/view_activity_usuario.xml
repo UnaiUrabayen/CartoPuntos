@@ -6,6 +6,104 @@
     android:background="@color/cp_light_primary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_mus.Activity_usuario">
+    tools:context=".Acitivityes.Activity_usuario">
+
+    <!-- Titulo -->
+
+    <!-- Línea separadora -->
+
+    <View
+        android:id="@+id/view_us"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="444dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nombreUsuario"
+        android:layout_width="248dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:text="@string/usuario"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_plantillas" />
+    <!-- Línea separadora -->
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="115dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombreUsuario" />
+
+    <TextView
+        android:id="@+id/tv_emailUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="17dp"
+        android:text="@string/email_2"
+        app:layout_constraintBottom_toTopOf="@+id/tv_totalPartidas"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_plantillas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="18dp"
+        android:background="@color/cp_light_button"
+        android:text="@string/plantillas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_totalPartidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/total_de_partidas"
+        app:layout_constraintBottom_toTopOf="@+id/view_us"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imb_logout"
+        android:layout_width="46dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/boton_para_cerrar_sesion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/logout_24dp" />
+
+    <ImageView
+        android:id="@+id/imb_atras"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="35dp"
+        android:src="@mipmap/arrow_back_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/view_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/boton_para_volver_atras" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

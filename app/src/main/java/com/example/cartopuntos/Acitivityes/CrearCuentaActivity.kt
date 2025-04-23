@@ -1,4 +1,4 @@
-package com.example.cartopuntos.activity_mus
+package com.example.cartopuntos.Acitivityes
 
 import android.content.Intent
 import android.os.Bundle
@@ -64,7 +64,7 @@ class CrearCuentaActivity : AppCompatActivity() {
             usuarioService.crearUsuario(nombreUsuario, email, contrasena) { success, message ->
                 if (success) {
                     Toast.makeText(this, "Cuenta creada exitosamente.", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, EscogerJuego::class.java)
+                    val intent = Intent(this, Activity_escogerJuego::class.java)
                     startActivity(intent)
                     finish()
                 } else {

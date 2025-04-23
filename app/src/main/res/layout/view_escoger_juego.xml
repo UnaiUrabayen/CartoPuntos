@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/cp_light_primary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_mus.EscogerJuego">
+    android:background="@color/cp_light_primary"
+    tools:context=".Acitivityes.Activity_escogerJuego">
     <!-- Titulo -->
     <TextView
         android:id="@+id/tv_tituloCartoPuntos"
@@ -93,18 +93,18 @@
         app:layout_constraintStart_toEndOf="@+id/imb_magic"
         app:layout_constraintTop_toBottomOf="@+id/tv_explicativo" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/imgb_btn_usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="44dp"
         android:layout_marginStart="352dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="11dp"
+        android:contentDescription="@string/boton_que_te_lleva_al_usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/account_circle_24px"
-        android:contentDescription="@string/boton_que_te_lleva_al_usuario" />
+        app:srcCompat="@drawable/account_circle_24px" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

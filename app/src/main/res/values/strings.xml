@@ -15,4 +15,11 @@
     <string name="boton_que_te_lleva_al_usuario">boton que te lleva al usuario</string>
     <string name="recuerdame">Recuerdame</string>
     <string name="mantener_sesi_n_iniciada">Mantener sesión iniciada</string>
+    <string name="usuario">Usuario</string>
+    <string name="plantillas">Plantillas</string>
+    <string name="total_plantillas">Total plantillas:</string>
+    <string name="email_2">Email:</string>
+    <string name="boton_para_cerrar_sesion">boton para cerrar sesion</string>
+    <string name="total_de_partidas">Total de partidas:</string>
+    <string name="boton_para_volver_atras">boton para volver atras</string>
 </resources>

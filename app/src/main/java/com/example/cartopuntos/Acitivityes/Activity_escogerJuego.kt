@@ -1,8 +1,9 @@
-package com.example.cartopuntos.activity_mus
+package com.example.cartopuntos.Acitivityes
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cartopuntos.R
 
@@ -12,7 +13,7 @@ class Activity_escogerJuego : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_escoger_juego) // Asegúrate de que este sea el nombre de tu layout XML
 
-        val btnUsuario: ImageButton = findViewById(R.id.imgb_btn_usuario)
+        val btnUsuario: ImageView = findViewById(R.id.imgb_btn_usuario)
         val btnMagic: ImageButton = findViewById(R.id.imb_magic)
         val btnMus: ImageButton = findViewById(R.id.imb_mus)
 
