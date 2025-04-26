@@ -16,78 +16,98 @@ class UsuarioService {
         contrasena: String,
         onComplete: (Boolean, String?) -> Unit
     ) {
-        // Validación de la contraseña
         val errorMessage = validarContrasena(contrasena)
         if (errorMessage != null) {
-            onComplete(false, errorMessage) // Devuelve el mensaje de error de contraseña
+            onComplete(false, errorMessage)
             return
         }
 
-        // Crear usuario en Firebase Authentication con email y contraseña
         auth.createUserWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Crear un objeto User con nombreUsuario y email
                     val usuario = User(nombreUsuario, email)
-
-                    // Guardar el usuario en Firestore, usando el email como ID del documento
                     db.collection("usuarios")
-                        .document(email)  // Usar el email como ID del documento
-                        .set(usuario)     // Guardar el nombre de usuario y email
+                        .document(email)
+                        .set(usuario)
                         .addOnSuccessListener {
-                            onComplete(true, null) // Usuario creado con éxito en Firestore
+                            onComplete(true, null)
                         }
-                        .addOnFailureListener { e ->
-                            onComplete(false, e.message) // Error al guardar en Firestore
+                        .addOnFailureListener {
+                            onComplete(false, "Ha ocurrido un error al guardar el usuario.")
                         }
                 } else {
-                    onComplete(false, task.exception?.message) // Error al crear usuario en Firebase Authentication
+                    onComplete(false, "Ha ocurrido un error al crear la cuenta.")
                 }
             }
     }
 
-    // Función para validar la contraseña
-    private fun validarContrasena(contrasena: String): String? {
-        // Verificar que la contraseña tenga al menos 6 caracteres
-        if (contrasena.length < 6) {
-            return "La contraseña debe tener al menos 6 caracteres."
-        }
-
-        // Verificar que la contraseña contenga al menos una letra mayúscula, una minúscula y un número
-        val hasUpperCase = contrasena.any { it.isUpperCase() }
-        val hasLowerCase = contrasena.any { it.isLowerCase() }
-        val hasDigit = contrasena.any { it.isDigit() }
-
-        if (!hasUpperCase || !hasLowerCase || !hasDigit) {
-            return "La contraseña debe contener al menos una letra mayúscula, una minúscula y un número."
-        }
-
-        return null // Si la contraseña es válida, retornar null (sin errores)
-    }
-
-    // Función para iniciar sesión con email y contraseña
-    fun iniciarSesion(email: String, contrasena: String, onComplete: (Boolean, String?, String?) -> Unit) {
+    // Función para iniciar sesión
+    fun iniciarSesion(
+        email: String,
+        contrasena: String,
+        onComplete: (Boolean, String?, String?) -> Unit
+    ) {
         auth.signInWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Obtener el nombre del usuario desde Firestore
                     db.collection("usuarios")
-                        .document(email)  // Usamos el email como ID de documento
+                        .document(email)
                         .get()
                         .addOnSuccessListener { document ->
                             if (document.exists()) {
                                 val nombreUsuario = document.getString("nombreUsuario")
                                 onComplete(true, null, nombreUsuario)
                             } else {
-                                onComplete(true, "Usuario no encontrado en Firestore", null)
+                                onComplete(false, "Usuario no encontrado.", null)
                             }
                         }
-                        .addOnFailureListener { exception ->
-                            onComplete(false, exception.message, null)
+                        .addOnFailureListener {
+                            onComplete(false, "Ha ocurrido un error al obtener los datos.", null)
                         }
                 } else {
-                    onComplete(false, task.exception?.message, null)
+                    onComplete(false, "Error al iniciar sesión. Verifica tu email y contraseña.", null)
                 }
             }
+    }
+
+    // NUEVO: Función para obtener el usuario actualmente logueado
+    fun obtenerUsuarioActual(onComplete: (User?) -> Unit) {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val email = currentUser.email
+            if (email != null) {
+                db.collection("usuarios")
+                    .document(email)
+                    .get()
+                    .addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val nombreUsuario = document.getString("nombreUsuario") ?: "Usuario"
+                            val user = User(nombreUsuario, email)
+                            onComplete(user)
+                        } else {
+                            onComplete(null)
+                        }
+                    }
+                    .addOnFailureListener {
+                        onComplete(null)
+                    }
+            } else {
+                onComplete(null)
+            }
+        } else {
+            onComplete(null)
+        }
+    }
+
+    // Validar contraseña
+    private fun validarContrasena(contrasena: String): String? {
+        if (contrasena.length < 6) return "La contraseña debe tener al menos 6 caracteres."
+        val hasUpperCase = contrasena.any { it.isUpperCase() }
+        val hasLowerCase = contrasena.any { it.isLowerCase() }
+        val hasDigit = contrasena.any { it.isDigit() }
+        if (!hasUpperCase || !hasLowerCase || !hasDigit) {
+            return "La contraseña debe contener al menos una letra mayúscula, una minúscula y un número."
+        }
+        return null
     }
 }

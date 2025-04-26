@@ -1,7 +1,6 @@
 package com.example.cartopuntos.Acitivityes
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +13,6 @@ class IniciarSesionActivity : AppCompatActivity() {
     private lateinit var edContraseniaUsuario: EditText
     private lateinit var btnIniciarSesion: Button
     private lateinit var chkMantenerSesion: CheckBox
-    private lateinit var sharedPreferences: SharedPreferences
 
     private val usuarioService = UsuarioService()
 
@@ -27,12 +25,13 @@ class IniciarSesionActivity : AppCompatActivity() {
         btnIniciarSesion = findViewById(R.id.btn_crearCuenta)
         chkMantenerSesion = findViewById(R.id.bch_mantnersesion)
 
-        sharedPreferences = getSharedPreferences("SesionUsuario", MODE_PRIVATE)
-
-        // Auto-login
-        if (sharedPreferences.getBoolean("mantener_sesion", false)) {
-            startActivity(Intent(this, Activity_escogerJuego::class.java))
-            finish()
+        // Auto-login: Verificamos si hay un usuario autenticado
+        usuarioService.obtenerUsuarioActual { user ->
+            if (user != null) {
+                // Si ya hay un usuario autenticado, redirigimos a la siguiente actividad
+                startActivity(Intent(this, Activity_escogerJuego::class.java))
+                finish()
+            }
         }
 
         findViewById<TextView>(R.id.tv_crearCuenta).setOnClickListener {
@@ -48,27 +47,16 @@ class IniciarSesionActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Llamar a la función de iniciar sesión en el servicio
             usuarioService.iniciarSesion(email, contrasena) { success, message, nombreUsuario ->
                 runOnUiThread {
                     if (success) {
-                        if (chkMantenerSesion.isChecked) {
-                            val editor = sharedPreferences.edit()
-                            editor.putBoolean("mantener_sesion", true)
-                            editor.putString("email_guardado", email)
-
-                            // Si el nombre de usuario es nulo, asignamos "Usuario" por defecto
-                            editor.putString("nombre_guardado", nombreUsuario ?: "Usuario")
-                            editor.apply()
-                        }
-
-                        // Aseguramos que siempre haya un mensaje válido para el Toast
-                        val toastMessage = message ?: "Inicio de sesión exitoso."
-                        Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
-
+                        // Si el inicio de sesión es exitoso, redirigimos a la siguiente actividad
+                        Toast.makeText(this, message ?: "Inicio de sesión exitoso.", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, Activity_escogerJuego::class.java))
                         finish()
                     } else {
-                        // En caso de error, mostramos el mensaje de error
+                        // Si hay un error, mostramos el mensaje de error
                         val errorMessage = message ?: "Ocurrió un error inesperado. Inténtalo nuevamente."
                         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                     }
