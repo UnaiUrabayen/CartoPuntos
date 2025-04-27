@@ -22,4 +22,8 @@
     <string name="boton_para_cerrar_sesion">boton para cerrar sesion</string>
     <string name="total_de_partidas">Total de partidas:</string>
     <string name="boton_para_volver_atras">boton para volver atras</string>
+    <string name="contadorPartidas">0</string>
+    <string name="separadorPArtidas">:</string>
+    <string name="boton_para_abrir_el_menu_de_la_partida">Boton para abrir el menu de la partida</string>
+    <string name="boton_para_abrir_el_meni_reiniciar_la_partida">Boton para abrir el meni reiniciar la partida</string>
 </resources>

@@ -5,6 +5,109 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cp_light_primary"
+    android:gravity="center"
     tools:context=".Acitivityes.Activity_mus">
+
+    <View
+        android:id="@+id/vie1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="334dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/contadorPunto1"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/contadorPartidas"
+        android:textSize="20sp"
+
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/menuBTN"
+        app:layout_constraintStart_toEndOf="@+id/separadorPuntos"
+        app:layout_constraintTop_toBottomOf="@+id/vie1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/separadorPuntos"
+        android:layout_width="15dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/separadorPArtidas"
+        android:textSize="20sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/contadorPunto1"
+        app:layout_constraintStart_toEndOf="@+id/contadorPartidasEQ2"
+        app:layout_constraintTop_toBottomOf="@+id/vie1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/contadorPartidasEQ2"
+        android:layout_width="26dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/contadorPartidas"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/separadorPuntos"
+        app:layout_constraintStart_toEndOf="@+id/reloadBTN"
+        app:layout_constraintTop_toBottomOf="@+id/vie1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/menuBTN"
+        android:layout_width="27dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vie1"
+        app:srcCompat="@mipmap/menu"
+        android:contentDescription="@string/boton_para_abrir_el_menu_de_la_partida" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="352dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/reloadBTN"
+        android:layout_width="31dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vie1"
+        app:srcCompat="@mipmap/refresh"
+        android:contentDescription="@string/boton_para_abrir_el_meni_reiniciar_la_partida" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
