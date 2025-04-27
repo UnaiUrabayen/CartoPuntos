@@ -26,4 +26,7 @@
     <string name="separadorPArtidas">:</string>
     <string name="boton_para_abrir_el_menu_de_la_partida">Boton para abrir el menu de la partida</string>
     <string name="boton_para_abrir_el_meni_reiniciar_la_partida">Boton para abrir el meni reiniciar la partida</string>
+    <string name="jugador">Jugador</string>
+    <string name="_0">0</string>
+    <string name="mas">+</string>
 </resources>
