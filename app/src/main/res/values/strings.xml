@@ -46,4 +46,5 @@
     <string name="icono_de_usuario_del_jugador_2">icono de usuario del jugador 2</string>
     <string name="icono_de_usaurio_jugador_3">icono de usaurio jugador 3</string>
     <string name="icono_de_usuario_del_jugador_4">icono de usuario del jugador 4</string>
+    <string name="boton_para_el_menu_de_dados_virtuales">boton para el menu de dados virtuales</string>
 </resources>
