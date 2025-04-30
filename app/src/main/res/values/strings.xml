@@ -32,4 +32,11 @@
     <string name="logo_de_la_app_carto_puntos">Logo de la app Carto Puntos</string>
     <string name="jugador_1">Jugador 1</string>
     <string name="puntosJugador1">0</string>
+    <string name="jugador1">Jugador1</string>
+    <string name="jugador_2">Jugador 2</string>
+    <string name="jugador3">Jugador3</string>
+    <string name="jugador__1">Jugador 1</string>
+    <string name="jugador_4">Jugador 4</string>
+    <string name="puntosJug1">0</string>
+    <string name="menos">-</string>
 </resources>
