@@ -38,17 +38,17 @@
 
     <ImageView
         android:id="@+id/menuBTN"
-        android:layout_width="27dp"
-        android:layout_height="35dp"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/borde_blanco"
+        android:contentDescription="@string/boton_para_abrir_el_menu_de_la_partida"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vie1"
-        app:srcCompat="@mipmap/menu"
-        android:contentDescription="@string/boton_para_abrir_el_menu_de_la_partida" />
+        app:srcCompat="@mipmap/trespuntospng" />
 
     <View
         android:id="@+id/view2"
@@ -77,25 +77,31 @@
         app:srcCompat="@mipmap/refresh" />
 
     <FrameLayout
-        android:id="@+id/frameLayout2"
+        android:id="@+id/frameLayout1"
         android:layout_width="196dp"
-        android:layout_height="336dp"
+        android:layout_height="338dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         android:background="@drawable/borde_blanco"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- CONTENIDO PRINCIPAL -->
+
+        <!-- NUEVO BOTÓN FUERA DEL LINEAR PERO ALINEADO ABAJO DEL + -->
+
         <LinearLayout
             android:id="@+id/cuadrante1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="0dp"
+            app:layout_constraintVertical_bias="0.5">
+
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -144,18 +150,19 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- NUEVO BOTÓN FUERA DEL LINEAR PERO ALINEADO ABAJO DEL + -->
         <Button
             android:id="@+id/btn_menu_jugador1"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|start"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="28dp"
-        android:backgroundTint="@color/cp_light_button"
-        android:rotation="90"
-        android:text="+" />
+            android:background="@mipmap/menu"
+
+            android:rotation="90"
+             />
+
 
         <!-- ICONO DEL JUGADOR -->
         <ImageView
@@ -174,12 +181,12 @@
 
     <FrameLayout
         android:layout_width="196dp"
-        android:layout_height="336dp"
+        android:layout_height="338dp"
         android:layout_marginStart="1dp"
         android:background="@drawable/borde_blanco"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/frameLayout2"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout1"
         app:layout_constraintTop_toTopOf="parent">
         <Button
             android:id="@+id/btn_menu_jugador2"
@@ -189,9 +196,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginStart="130dp"
             android:layout_marginTop="28dp"
-            android:backgroundTint="@color/cp_light_button"
+            android:background="@mipmap/menu"
             android:rotation="90"
-            android:text="+" />
+             />
 
         <LinearLayout
             android:id="@+id/cuadrante2"
@@ -333,9 +340,9 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/cp_light_button"
+            android:background="@mipmap/menu"
             android:rotation="90"
-            android:text="+" />
+             />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -368,9 +375,9 @@
             android:layout_marginStart="130dp"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/cp_light_button"
+            android:background="@mipmap/menu"
             android:rotation="90"
-            android:text="+" />
+            />
 
         <LinearLayout
             android:id="@+id/cuadrante4"
