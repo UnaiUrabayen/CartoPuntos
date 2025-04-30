@@ -37,7 +37,7 @@
         android:layout_height="28dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="116dp"
-        android:background="@drawable/borde_blanco"
+        android:background="@drawable/borde_blanco_eq2"
         android:text="@string/contadorPartidas"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -54,7 +54,7 @@
         android:layout_height="28dp"
         android:layout_marginStart="128dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/borde_blanco"
+        android:background="@drawable/borde_blanco_eq1"
         android:text="@string/contadorPartidas"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -72,6 +72,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="4dp"
+        android:background="@drawable/borde_blanco"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vie1"
@@ -95,6 +96,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/borde_blanco"
         android:contentDescription="@string/boton_para_abrir_el_meni_reiniciar_la_partida"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +109,9 @@
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toStartOf="@+id/barraVerticalCentral"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/cp_team2_primary"
+        >
 
         <LinearLayout
             android:id="@+id/cuadrante1"
@@ -128,7 +132,7 @@
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:rotation="90"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team2"
                     android:text="@string/menos"
                     android:textSize="32sp" />
 
@@ -147,7 +151,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team2"
                     android:text="@string/mas"
                     android:rotation="90"
                     android:textSize="32sp" />
@@ -186,7 +190,9 @@
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/barraVerticalCentral"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/cp_team1_primary"
+        >
 
         <LinearLayout
             android:id="@+id/cuadrante2"
@@ -216,7 +222,7 @@
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:rotation="270"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team1"
                     android:text="@string/menos"
                     android:textSize="32sp" />
 
@@ -235,7 +241,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team1"
                     android:text="@string/mas"
                     android:rotation="270"
                     android:textSize="32sp" />
@@ -259,6 +265,7 @@
         app:layout_constraintTop_toBottomOf="@+id/vie1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/cp_team1_primary"
         app:layout_constraintEnd_toStartOf="@+id/barraVerticalCentral">
 
         <LinearLayout
@@ -266,7 +273,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+
+            >
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -280,7 +289,7 @@
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:rotation="90"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team1"
                     android:text="@string/menos"
                     android:textSize="32sp" />
 
@@ -299,7 +308,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team1"
                     android:text="@string/mas"
                     android:rotation="90"
                     android:textSize="32sp" />
@@ -332,7 +341,9 @@
         app:layout_constraintTop_toBottomOf="@+id/vie1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/barraVerticalCentral"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/cp_team2_primary"
+        >
 
         <LinearLayout
             android:id="@+id/cuadrante4"
@@ -362,7 +373,7 @@
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:rotation="270"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team2"
                     android:text="@string/menos"
                     android:textSize="32sp" />
 
@@ -381,7 +392,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/cp_light_button"
+                    android:background="@color/cp_light_button_team2"
                     android:text="@string/mas"
                     android:rotation="270"
                     android:textSize="32sp" />

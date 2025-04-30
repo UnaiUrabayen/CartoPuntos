@@ -14,6 +14,11 @@
     <color name="cp_light_primary">#C1A7F6</color> <!-- Fondo suave morado pastel -->
     <color name="cp_light_button">#D9B7FF</color>  <!-- Botón lila suave -->
     <color name="cp_light_text">#FFFFFF</color>    <!-- Texto blanco -->
+    <color name="cp_team1_primary">#D1A2D8</color> <!-- Morado pastel suave para Equipo 1 -->
+    <color name="cp_team2_primary">#A9E1D5</color> <!-- Verde menta pastel suave para Equipo 2 -->
+    <color name="cp_light_button_team1">#E7B8E5</color>  <!-- Botón para el equipo 1 en modo claro -->
+    <color name="cp_light_button_team2">#80D0A7</color>  <!-- Botón para el equipo 2 en modo claro -->
+
 
     <!-- ======================= -->
     <!--      Modo Oscuro        -->
@@ -21,6 +26,12 @@
     <color name="cp_dark_primary">#B29DD6</color>  <!-- Fondo suave morado oscuro pastel -->
     <color name="cp_dark_button">#D0A1FF</color>   <!-- Botón morado oscuro pastel -->
     <color name="cp_dark_text">#FFFFFF</color>     <!-- Texto blanco para mejor legibilidad -->
+    <color name="cp_team1_primary_dark">#9C8CC2</color> <!-- Morado pastel oscuro para Equipo 1 en modo oscuro -->
+    <color name="cp_team2_primary_dark">#76B8A7</color> <!-- Verde menta oscuro para Equipo 2 en modo oscuro -->
+    <color name="cp_dark_button_team2">#4C8777</color>   <!-- Botón para el equipo 2 en modo oscuro -->
+    <color name="cp_dark_button_team1">#9B72E8</color>   <!-- Botón para el equipo 1 en modo oscuro -->
+
+
 
     <!-- ======================= -->
     <!-- Color gris pastel -->

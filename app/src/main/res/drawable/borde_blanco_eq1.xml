@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/cp_team1_primary"/> <!-- Fondo con el color del equipo 1 -->
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/white"/> <!-- Borde blanco -->
+    <corners android:radius="2dp"/> <!-- Esquinas redondeadas opcionales -->
+</shape>
