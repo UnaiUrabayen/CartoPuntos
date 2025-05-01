@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.52" />
 
     <TextView
-        android:id="@+id/contadorPartidasEQ2"
+        android:id="@+id/contadorPunto2"
         android:layout_width="31dp"
         android:layout_height="28dp"
         android:layout_marginStart="128dp"
@@ -161,11 +161,11 @@
             <TextView
                 android:id="@+id/tv_jugador1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_height="38dp"
                 android:rotation="90"
-                android:text="@string/jugador__1" />
+                android:text="@string/jugador__1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ImageView
@@ -318,11 +318,11 @@
             <TextView
                 android:id="@+id/tv_jugador3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="41dp"
+                android:rotation="90"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:rotation="90" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ImageView
