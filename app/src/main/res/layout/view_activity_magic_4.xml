@@ -188,6 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout1"
         app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/btn_menu_jugador2"
             android:layout_width="48dp"
@@ -197,8 +198,7 @@
             android:layout_marginStart="130dp"
             android:layout_marginTop="28dp"
             android:background="@mipmap/menu"
-            android:rotation="90"
-             />
+            android:rotation="90" />
 
         <LinearLayout
             android:id="@+id/cuadrante2"
@@ -206,7 +206,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
-
 
             <TextView
                 android:id="@+id/tv_jugador2"
@@ -217,21 +216,21 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
             <LinearLayout
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <!-- INVERTIDO: MAS ARRIBA -->
                 <Button
-                    android:id="@+id/btn_menos2"
+                    android:id="@+id/btn_mas2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
-                    android:text="@string/menos"
+                    android:text="@string/mas"
                     android:textSize="32sp" />
 
                 <TextView
@@ -244,14 +243,15 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
+                <!-- INVERTIDO: MENOS ABAJO -->
                 <Button
-                    android:id="@+id/btn_mas2"
+                    android:id="@+id/btn_menos2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
-                    android:text="@string/mas"
+                    android:text="@string/menos"
                     android:textSize="32sp" />
             </LinearLayout>
         </LinearLayout>
@@ -356,6 +356,7 @@
     </FrameLayout>
 
 
+    <!-- Cuadrante 4 (FrameLayout del jugador 4) -->
     <FrameLayout
         android:id="@+id/frameLayout4"
         android:layout_width="198dp"
@@ -376,8 +377,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginBottom="10dp"
             android:background="@mipmap/menu"
-            android:rotation="90"
-            />
+            android:rotation="90" />
 
         <LinearLayout
             android:id="@+id/cuadrante4"
@@ -401,14 +401,15 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <!-- INVERTIDO: MAS ARRIBA -->
                 <Button
-                    android:id="@+id/btn_menos4"
+                    android:id="@+id/btn_mas4"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
-                    android:text="@string/menos"
+                    android:text="@string/mas"
                     android:textSize="32sp" />
 
                 <TextView
@@ -421,14 +422,15 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
+                <!-- INVERTIDO: MENOS ABAJO -->
                 <Button
-                    android:id="@+id/btn_mas4"
+                    android:id="@+id/btn_menos4"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
-                    android:text="@string/mas"
+                    android:text="@string/menos"
                     android:textSize="32sp" />
             </LinearLayout>
         </LinearLayout>
@@ -443,7 +445,6 @@
             android:rotation="270"
             app:srcCompat="@drawable/account_circle_24px" />
     </FrameLayout>
-
 
 
 
