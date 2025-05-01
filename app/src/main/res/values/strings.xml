@@ -47,4 +47,16 @@
     <string name="icono_de_usaurio_jugador_3">icono de usaurio jugador 3</string>
     <string name="icono_de_usuario_del_jugador_4">icono de usuario del jugador 4</string>
     <string name="boton_para_el_menu_de_dados_virtuales">boton para el menu de dados virtuales</string>
+    <string name="jugador_6">Jugador 6</string>
+    <string name="puntosJug6">0</string>
+    <string name="jugador_5">Jugador 5</string>
+    <string name="puntosJug5">0</string>
+    <string name="icono_de_usuario_5">Icono de usuario 5</string>
+    <string name="icono_de_usaurio_jugador_6">Icono de usaurio jugador 6</string>
+    <string name="jugador_7">Jugador 7</string>
+    <string name="icono_de_usuario_jugador_7">Icono de usuario jugador 7</string>
+    <string name="puntosJug7">0</string>
+    <string name="jugador_8">Jugador 8</string>
+    <string name="puntosJug8">0</string>
+    <string name="icono_de_usuario_de_el_jugador_8">Icono de usuario de el jugador 8</string>
 </resources>

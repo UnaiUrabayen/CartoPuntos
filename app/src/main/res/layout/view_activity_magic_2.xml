@@ -153,7 +153,7 @@
 
     <!-- FRAMELAYOUT JUGADOR 2 (ABAJO COMPLETO) -->
     <FrameLayout
-        android:id="@+id/frameLayout5"
+        android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="338dp"
         android:layout_marginEnd="1dp"

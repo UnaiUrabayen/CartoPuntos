@@ -161,7 +161,7 @@
             android:background="@mipmap/menu"
 
             android:rotation="90"
-             />
+            />
 
 
         <!-- ICONO DEL JUGADOR -->
@@ -177,14 +177,11 @@
     </FrameLayout>
 
 
-
-
     <FrameLayout
         android:layout_width="196dp"
         android:layout_height="338dp"
         android:layout_marginStart="1dp"
         android:background="@drawable/borde_blanco"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout1"
         app:layout_constraintTop_toTopOf="parent">
@@ -194,9 +191,9 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|start"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="130dp"
             android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
             android:background="@mipmap/menu"
             android:rotation="90" />
 
@@ -270,10 +267,9 @@
     <FrameLayout
         android:id="@+id/frameLayout3"
         android:layout_width="198dp"
-        android:layout_height="338dp"
+        android:layout_height="170dp"
         android:layout_marginEnd="1dp"
         android:background="@drawable/borde_blanco"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/frameLayout4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vie1">
@@ -293,8 +289,8 @@
 
                 <Button
                     android:id="@+id/btn_menos3"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="90"
@@ -313,8 +309,8 @@
 
                 <Button
                     android:id="@+id/btn_mas3"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="90"
@@ -334,20 +330,18 @@
 
         <Button
             android:id="@+id/btn_menu_jugador3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="top|end"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:background="@mipmap/menu"
-            android:rotation="90"
-             />
+            android:rotation="90" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_gravity="bottom|end"
             android:layout_margin="8dp"
             android:contentDescription="@string/icono_de_usaurio_jugador_3"
@@ -360,22 +354,20 @@
     <FrameLayout
         android:id="@+id/frameLayout4"
         android:layout_width="198dp"
-        android:layout_height="338dp"
+        android:layout_height="170dp"
         android:layout_marginStart="1dp"
         android:background="@drawable/borde_blanco"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout3"
         app:layout_constraintTop_toBottomOf="@+id/vie1">
 
         <Button
             android:id="@+id/btn_menu_jugador4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:background="@mipmap/menu"
             android:rotation="90" />
 
@@ -404,8 +396,8 @@
                 <!-- INVERTIDO: MAS ARRIBA -->
                 <Button
                     android:id="@+id/btn_mas4"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
@@ -425,8 +417,8 @@
                 <!-- INVERTIDO: MENOS ABAJO -->
                 <Button
                     android:id="@+id/btn_menos4"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button"
                     android:rotation="270"
@@ -437,14 +429,193 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_gravity="bottom|start"
             android:layout_margin="8dp"
             android:contentDescription="@string/icono_de_usuario_del_jugador_4"
             android:rotation="270"
             app:srcCompat="@drawable/account_circle_24px" />
     </FrameLayout>
+    <!-- Jugador 5 (debajo del jugador 3) -->
+    <!-- Jugador 5 (debajo del jugador 3) -->
+    <FrameLayout
+        android:id="@+id/frameLayout5"
+        android:layout_width="198dp"
+        android:layout_height="170dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout3">
+
+        <LinearLayout
+            android:id="@+id/cuadrante5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_menos5"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/cp_light_button"
+                    android:rotation="90"
+                    android:text="@string/menos"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/tv_puntosJuj5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:rotation="90"
+                    android:text="@string/puntosJug5"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_mas5"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/cp_light_button"
+                    android:rotation="90"
+                    android:text="@string/mas"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_jugador5"
+                android:layout_width="76dp"
+                android:layout_height="20dp"
+                android:rotation="90"
+                android:text="@string/jugador_5"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_menu_jugador5"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="top|end"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@mipmap/menu"
+            android:rotation="90" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/icono_de_usuario_5"
+            android:rotation="90"
+            app:srcCompat="@drawable/account_circle_24px" />
+    </FrameLayout>
+
+
+    <!-- Jugador 6 (debajo del jugador 4) -->
+    <!-- Jugador 6 (debajo del jugador 4) -->
+    <FrameLayout
+        android:id="@+id/frameLayout6"
+        android:layout_width="198dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="1dp"
+        android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout4">
+
+        <Button
+            android:id="@+id/btn_menu_jugador6"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@mipmap/menu"
+            android:rotation="90" />
+
+        <LinearLayout
+            android:id="@+id/cuadrante6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_jugador6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="270"
+                android:text="@string/jugador_6"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- INVERTIDO: MAS ARRIBA -->
+                <Button
+                    android:id="@+id/btn_mas6"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/cp_light_button"
+                    android:rotation="270"
+                    android:text="@string/mas"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/tv_puntosJuj6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:rotation="270"
+                    android:text="@string/puntosJug6"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <!-- INVERTIDO: MENOS ABAJO -->
+                <Button
+                    android:id="@+id/btn_menos6"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/cp_light_button"
+                    android:rotation="270"
+                    android:text="@string/menos"
+                    android:textSize="32sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/icono_de_usaurio_jugador_6"
+            android:rotation="270"
+            app:srcCompat="@drawable/account_circle_24px" />
+    </FrameLayout>
+
 
 
 
