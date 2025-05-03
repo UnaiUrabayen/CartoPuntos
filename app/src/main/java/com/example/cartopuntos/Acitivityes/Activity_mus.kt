@@ -5,11 +5,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.NumberPicker
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.cartopuntos.Dialogs.MenuDialogFragment
+import com.example.cartopuntos.Dialogs.AjustesDialogFragment
+import com.example.cartopuntos.Dialogs.MenuDialogReiniciarMus
 import com.example.cartopuntos.Model.Entity.PartidaMus
 import com.example.cartopuntos.R
 
@@ -19,7 +22,7 @@ import java.util.UUID
 class Activity_mus : AppCompatActivity() {
 
     private lateinit var partida: PartidaMus
-
+    private lateinit var menuBTN: ImageView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +30,7 @@ class Activity_mus : AppCompatActivity() {
         setContentView(R.layout.view_activity_mus)
 
         partida = PartidaMus(
-            id = UUID.randomUUID().toString(), // Genera un nuevo ID único para la nueva partida
+            id = UUID.randomUUID().toString(),
             fecha = System.currentTimeMillis(),
             puntosJugador1 = 0,
             puntosJugador2 = 0,
@@ -38,7 +41,8 @@ class Activity_mus : AppCompatActivity() {
             victoriasEquipo1 = 0,
             victoriasEquipo2 = 0,
             equipoGanador = null,
-            nombrePartida = "Partida X" // O cualquier otro nombre de partida
+            nombrePartida = "Partida X",
+            cantidadRondas = 3 // Valor por defecto
         )
 
         val tvJ1 = findViewById<TextView>(R.id.tv_puntosJuj1)
@@ -57,9 +61,10 @@ class Activity_mus : AppCompatActivity() {
         val btnMas4 = findViewById<Button>(R.id.btn_mas4)
         val btnMenos4 = findViewById<Button>(R.id.btn_menos4)
 
+
         val reloadButton = findViewById<ImageView>(R.id.reloadBTN)
         reloadButton.setOnClickListener {
-            val menuDialog = MenuDialogFragment(
+            val menuDialog = MenuDialogReiniciarMus(
                 onReiniciarClick = { reiniciarPartida() },
                 onDeclararClick = {
                     // Mostrar el diálogo para declarar el ganador
@@ -69,7 +74,19 @@ class Activity_mus : AppCompatActivity() {
             menuDialog.show(supportFragmentManager, "MenuDialog")
         }
 
+        // Referencia al ImageView menuBTN
+        menuBTN = findViewById(R.id.menuBTN)
 
+        // Configurar el click para abrir el diálogo de ajustes de rondas
+        menuBTN.setOnClickListener {
+            // Mostrar el nuevo DialogFragment para ajustes de rondas
+            val ajustesDialogFragment = AjustesDialogFragment { cantidadRondas ->
+                // Aquí recibimos el valor de rondas seleccionado
+                partida.cantidadRondas = cantidadRondas
+                Toast.makeText(this, "Rondas cambiadas a $cantidadRondas", Toast.LENGTH_SHORT).show()
+            }
+            ajustesDialogFragment.show(supportFragmentManager, "AjustesDialog")
+        }
 
         resetearContadores()
 
@@ -164,13 +181,13 @@ class Activity_mus : AppCompatActivity() {
             resetearContadores()
         }
 
-        if (partida.puntosEquipo1 == 3) {
+        if (partida.puntosEquipo1 == partida.cantidadRondas) {
             partida.equipoGanador = "Equipo 1"
             partida.victoriasEquipo1++
             mostrarMensajeVictoria("Equipo 1")
         }
 
-        if (partida.puntosEquipo2 == 3) {
+        if (partida.puntosEquipo2 == partida.cantidadRondas) {
             partida.equipoGanador = "Equipo 2"
             partida.victoriasEquipo2++
             mostrarMensajeVictoria("Equipo 2")
@@ -208,7 +225,9 @@ class Activity_mus : AppCompatActivity() {
             victoriasEquipo1 = 0,
             victoriasEquipo2 = 0,
             equipoGanador = null,
-            nombrePartida = "Partida X" // O cualquier otro nombre de partida
+            nombrePartida = "Partida X",
+            cantidadRondas =partida.cantidadRondas //guardar ajuste
+
         )
         resetearContadores()
         findViewById<TextView>(R.id.contadorPunto1).text = "0"

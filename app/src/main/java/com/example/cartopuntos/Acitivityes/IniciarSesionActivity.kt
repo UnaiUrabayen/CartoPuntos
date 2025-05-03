@@ -25,19 +25,23 @@ class IniciarSesionActivity : AppCompatActivity() {
         btnIniciarSesion = findViewById(R.id.btn_crearCuenta)
         chkMantenerSesion = findViewById(R.id.bch_mantnersesion)
 
-        // Auto-login: Verificamos si hay un usuario autenticado
+        // Verificar si ya hay un usuario autenticado
         usuarioService.obtenerUsuarioActual { user ->
-            if (user != null) {
-                // Si ya hay un usuario autenticado, redirigimos a la siguiente actividad
-                startActivity(Intent(this, Activity_escogerJuego::class.java))
-                finish()
+            runOnUiThread {
+                if (user != null) {
+                    // Si ya hay un usuario autenticado, redirigimos a la siguiente actividad
+                    startActivity(Intent(this, Activity_escogerJuego::class.java))
+                    finish()  // Finalizamos la actividad de inicio de sesión para que no regrese
+                }
             }
         }
 
+        // Navegar a la pantalla de crear cuenta
         findViewById<TextView>(R.id.tv_crearCuenta).setOnClickListener {
             startActivity(Intent(this, CrearCuentaActivity::class.java))
         }
 
+        // Lógica para el botón de iniciar sesión
         btnIniciarSesion.setOnClickListener {
             val email = edEmailUsuario.text.toString().trim()
             val contrasena = edContraseniaUsuario.text.toString().trim()
@@ -47,7 +51,7 @@ class IniciarSesionActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Llamar a la función de iniciar sesión en el servicio
+            // Llamar al servicio de inicio de sesión
             usuarioService.iniciarSesion(email, contrasena) { success, message, nombreUsuario ->
                 runOnUiThread {
                     if (success) {

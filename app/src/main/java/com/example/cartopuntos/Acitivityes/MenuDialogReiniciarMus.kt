@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.cartopuntos.R
 
-class MenuDialogFragment(
+class MenuDialogReiniciarMus(
     private val onReiniciarClick: () -> Unit,
     private val onDeclararClick: () -> Unit
 ) : DialogFragment() {

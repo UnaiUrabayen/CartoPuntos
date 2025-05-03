@@ -62,4 +62,7 @@
     <string name="boton_para_volver_artras">Boton para volver artras</string>
     <string name="reiniciar_partida">Reiniciar Partida</string>
     <string name="declarar_ganador">Declarar Ganador</string>
+    <string name="cantidad_de_rondas_para_ganar">Cantidad de rondas para ganar:</string>
+    <string name="ajustes_del_juego">Ajustes del Juego</string>
+    <string name="confirmar">Confirmar</string>
 </resources>

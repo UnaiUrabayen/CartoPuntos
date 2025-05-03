@@ -16,5 +16,6 @@ data class PartidaMus(
     var victoriasEquipo1: Int,
     var victoriasEquipo2: Int,
     var equipoGanador: String?,
-    var nombrePartida: String
+    var nombrePartida: String,
+    var cantidadRondas: Int // Nueva propiedad para almacenar la cantidad de rondas necesarias para ganar
 )
