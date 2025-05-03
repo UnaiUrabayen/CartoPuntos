@@ -59,4 +59,7 @@
     <string name="jugador_8">Jugador 8</string>
     <string name="puntosJug8">0</string>
     <string name="icono_de_usuario_de_el_jugador_8">Icono de usuario de el jugador 8</string>
+    <string name="boton_para_volver_artras">Boton para volver artras</string>
+    <string name="reiniciar_partida">Reiniciar Partida</string>
+    <string name="declarar_ganador">Declarar Ganador</string>
 </resources>

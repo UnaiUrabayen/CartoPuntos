@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_dialog"
+    android:elevation="8dp">
+
+    <!-- Botón de volver -->
+    <ImageButton
+        android:id="@+id/btnVolver"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="start"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_button_border"
+        android:src="@mipmap/arrow_back_24dp"
+        android:contentDescription="@string/boton_para_volver_artras"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        app:tint="@android:color/black" />
+
+    <!-- Botón Reiniciar Partida -->
+    <Button
+        android:id="@+id/btnReiniciar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reiniciar_partida"
+        android:background="@drawable/bg_button_border"
+        android:textColor="@android:color/black"
+        android:padding="14dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botón Declarar Ganador -->
+    <Button
+        android:id="@+id/btnDeclarar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/declarar_ganador"
+        android:background="@drawable/bg_button_border"
+        android:textColor="@android:color/black"
+        android:padding="14dp" />
+
+</LinearLayout>

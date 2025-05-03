@@ -16,15 +16,10 @@ class UsuarioService {
         contrasena: String,
         onComplete: (Boolean, String?) -> Unit
     ) {
-        val errorMessage = validarContrasena(contrasena)
-        if (errorMessage != null) {
-            onComplete(false, errorMessage)
-            return
-        }
-
         auth.createUserWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    // Si el usuario se ha creado correctamente, se guarda en Firestore
                     val usuario = User(nombreUsuario, email)
                     db.collection("usuarios")
                         .document(email)
@@ -36,7 +31,9 @@ class UsuarioService {
                             onComplete(false, "Ha ocurrido un error al guardar el usuario.")
                         }
                 } else {
-                    onComplete(false, "Ha ocurrido un error al crear la cuenta.")
+                    // Si falla, mostramos el error de Firebase
+                    val errorMessage = task.exception?.localizedMessage
+                    onComplete(false, errorMessage ?: "Ha ocurrido un error al crear la cuenta.")
                 }
             }
     }
@@ -50,6 +47,7 @@ class UsuarioService {
         auth.signInWithEmailAndPassword(email, contrasena)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    // Si la sesión es exitosa, obtenemos los datos del usuario
                     db.collection("usuarios")
                         .document(email)
                         .get()
@@ -65,7 +63,9 @@ class UsuarioService {
                             onComplete(false, "Ha ocurrido un error al obtener los datos.", null)
                         }
                 } else {
-                    onComplete(false, "Error al iniciar sesión. Verifica tu email y contraseña.", null)
+                    // Si falla el inicio de sesión, mostramos el error de Firebase
+                    val errorMessage = task.exception?.localizedMessage
+                    onComplete(false, errorMessage ?: "Error al iniciar sesión. Verifica tu email y contraseña.", null)
                 }
             }
     }
@@ -97,17 +97,5 @@ class UsuarioService {
         } else {
             onComplete(null)
         }
-    }
-
-    // Validar contraseña
-    private fun validarContrasena(contrasena: String): String? {
-        if (contrasena.length < 6) return "La contraseña debe tener al menos 6 caracteres."
-        val hasUpperCase = contrasena.any { it.isUpperCase() }
-        val hasLowerCase = contrasena.any { it.isLowerCase() }
-        val hasDigit = contrasena.any { it.isDigit() }
-        if (!hasUpperCase || !hasLowerCase || !hasDigit) {
-            return "La contraseña debe contener al menos una letra mayúscula, una minúscula y un número."
-        }
-        return null
     }
 }

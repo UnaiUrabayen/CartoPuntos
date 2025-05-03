@@ -27,7 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Acitivityes.MenuDialogFragment"
+            android:exported="false" />
         <!-- SplashActivity como la actividad principal -->
         <activity
             android:name=".Acitivityes.SplashActivity"
@@ -36,47 +38,38 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Otras actividades -->
+        </activity> <!-- Otras actividades -->
         <activity
             android:name=".Acitivityes.Activity_plantillas"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.Activity_mus"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.Activity_magic"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.Activity_usuario"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.Activity_escogerJuego"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.CrearCuentaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Acitivityes.IniciarSesionActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- MainActivity (si es que es necesario) -->
+            android:screenOrientation="portrait" /> <!-- MainActivity (si es que es necesario) -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -85,10 +78,10 @@
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
