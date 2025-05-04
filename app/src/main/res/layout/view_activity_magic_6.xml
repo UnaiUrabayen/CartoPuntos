@@ -110,7 +110,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btn_menos"
+                    android:id="@+id/btn_menos1"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
@@ -130,7 +130,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btn_mas"
+                    android:id="@+id/btn_mas1"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"

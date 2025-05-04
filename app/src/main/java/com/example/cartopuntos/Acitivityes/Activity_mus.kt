@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -52,8 +51,8 @@ class Activity_mus : AppCompatActivity() {
         val tvEq1 = findViewById<TextView>(R.id.contadorPunto1)
         val tvEq2 = findViewById<TextView>(R.id.contadorPunto2)
 
-        val btnMas1 = findViewById<Button>(R.id.btn_mas)
-        val btnMenos1 = findViewById<Button>(R.id.btn_menos)
+        val btnMas1 = findViewById<Button>(R.id.btn_mas1)
+        val btnMenos1 = findViewById<Button>(R.id.btn_menos1)
         val btnMas2 = findViewById<Button>(R.id.btn_mas2)
         val btnMenos2 = findViewById<Button>(R.id.btn_menos2)
         val btnMas3 = findViewById<Button>(R.id.btn_mas3)
