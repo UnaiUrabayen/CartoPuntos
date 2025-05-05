@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cp_light_primary"
+    android:padding="16dp">
+
+    <!-- Título principal del diálogo -->
+    <TextView
+        android:id="@+id/titleDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/configuraci_n"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Mensaje adicional sobre lo que puede hacer el usuario -->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cambiar_la_cantidad_de_jugadores"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/titleDialog"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Spinner para seleccionar la cantidad de jugadores -->
+    <Spinner
+        android:id="@+id/spinnerCantidadJugadores"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/descriptionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CheckBox para activar sonido -->
+    <CheckBox
+        android:id="@+id/checkboxSonido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notificar_con_sonido_al_morir"
+        app:layout_constraintTop_toBottomOf="@id/spinnerCantidadJugadores"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- CheckBox para permitir vida negativa -->
+    <CheckBox
+        android:id="@+id/checkboxVidaNegativa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/permitir_vida_negativa"
+        app:layout_constraintTop_toBottomOf="@id/checkboxSonido"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- CheckBox para auto reiniciar -->
+    <CheckBox
+        android:id="@+id/checkboxAutoReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auto_reiniciar_si_queda_1_vivo"
+        app:layout_constraintTop_toBottomOf="@id/checkboxVidaNegativa"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Botón de aplicar -->
+    <Button
+        android:id="@+id/btnAplicar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/cp_light_button"
+        android:text="@string/aplicar"
+        app:layout_constraintTop_toBottomOf="@id/checkboxAutoReset"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

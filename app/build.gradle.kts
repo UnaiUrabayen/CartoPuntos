@@ -64,7 +64,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
-    //Cambiar las versiones para la version de Kotlin
+
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
     implementation(libs.androidx.appcompat)
@@ -82,9 +82,8 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation("io.github.shashank02051997:FancyToast:2.0.1")
     implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.room:room-runtime:2.5.0") // Asegúrate de usar la última versión
-    kapt("androidx.room:room-compiler:2.5.0") // Si usas Kotlin
-
+    implementation("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2")
 
 

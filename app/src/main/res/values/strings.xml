@@ -65,4 +65,10 @@
     <string name="cantidad_de_rondas_para_ganar">Cantidad de rondas para ganar:</string>
     <string name="ajustes_del_juego">Ajustes del Juego</string>
     <string name="confirmar">Confirmar</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="notificar_con_sonido_al_morir">Notificar con sonido al morir</string>
+    <string name="permitir_vida_negativa">Permitir vida negativa</string>
+    <string name="auto_reiniciar_si_queda_1_vivo">Auto-reiniciar si queda 1 vivo</string>
+    <string name="aplicar">Aplicar</string>
+    <string name="cambiar_la_cantidad_de_jugadores">Cambiar la cantidad de jugadores.</string>
 </resources>
