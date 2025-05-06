@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.cartopuntos.Dialogs.AjustesDialogFragment
-import com.example.cartopuntos.Dialogs.MenuDialogReiniciarMus
+import com.example.cartopuntos.Utils.AjustesDialogFragment
+import com.example.cartopuntos.Utils.MenuDialogReiniciarMus
 import com.example.cartopuntos.Model.Entity.PartidaMus
 import com.example.cartopuntos.R
 

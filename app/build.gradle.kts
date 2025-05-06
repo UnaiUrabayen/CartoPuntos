@@ -69,6 +69,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.3")
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.gridlayout)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

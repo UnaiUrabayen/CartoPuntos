@@ -1,4 +1,4 @@
-package com.example.cartopuntos.Dialogs
+package com.example.cartopuntos.Utils
 
 import android.app.Dialog
 import android.os.Bundle

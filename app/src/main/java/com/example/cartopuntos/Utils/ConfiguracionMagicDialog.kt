@@ -1,4 +1,4 @@
-package com.example.cartopuntos.Acitivityes
+package com.example.cartopuntos.Utils
 
 import android.app.AlertDialog
 import android.app.Dialog

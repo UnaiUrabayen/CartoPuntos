@@ -8,8 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cartopuntos.Dialogs.MenuDialogReiniciarMagic
+import com.example.cartopuntos.Dialogs.MenuDialogDados
+import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 import com.example.cartopuntos.Logica.JuegoMagic
+import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
 import com.example.cartopuntos.R
 
 
@@ -67,6 +69,13 @@ class Activity_magic : AppCompatActivity() {
                 }
             )
             dialog.show(supportFragmentManager, "ReiniciarDialog")
+        }
+        findViewById<ImageView>(R.id.imageView).setOnClickListener {
+            val dialog = MenuDialogDados { caras ->
+                val resultado = juego.lanzarDado(caras)
+                Toast.makeText(this, "Resultado del D$caras: $resultado", Toast.LENGTH_SHORT).show()
+            }
+            dialog.show(supportFragmentManager, "MenuDadosDialog")
         }
 
 

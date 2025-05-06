@@ -43,6 +43,10 @@ class JuegoMagic(
             vidas[jugador] = vidaInicial
         }
     }
+    fun lanzarDado(caras: Int): Int {
+        require(caras > 0) { "El dado debe tener al menos 1 cara." }
+        return (1..caras).random()
+    }
 
     fun getJugadores(): Map<Int, Int> = vidas.toMap()
 }

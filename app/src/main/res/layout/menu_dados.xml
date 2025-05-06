@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/cp_light_primary">
+
+    <!-- Título del menú -->
+    <TextView
+        android:id="@+id/dice_menu_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_de_dados"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Grid de botones de dados -->
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:columnCount="3"
+        app:rowCount="4"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_d2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d2"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d3"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d4"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d6"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d8"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d10"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d12"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d16"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_d20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d20"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:id="@+id/btn_dX"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/d_x"
+            android:backgroundTint="@color/cp_light_button"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_margin="8dp" />
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</LinearLayout>
