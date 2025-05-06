@@ -54,13 +54,13 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="5dp"
         android:background="@color/cp_light_text"
         app:layout_constraintBottom_toTopOf="@+id/menuBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout8" />
 
     <ImageView
         android:id="@+id/reloadBTN"
@@ -81,7 +81,9 @@
         android:layout_width="198dp"
         android:layout_height="170dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,14 +176,13 @@
     </FrameLayout>
 
 
-
-
-
     <FrameLayout
         android:layout_width="198dp"
         android:layout_height="170dp"
         android:layout_marginStart="1dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout1"
         app:layout_constraintTop_toTopOf="parent">
@@ -266,10 +267,11 @@
         android:id="@+id/frameLayout7"
         android:layout_width="198dp"
         android:layout_height="170dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/borde_blanco"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/reloadBTN"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout1">
 
@@ -353,10 +355,9 @@
         android:layout_width="198dp"
         android:layout_height="170dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         android:background="@drawable/borde_blanco"
-        app:layout_constraintBottom_toTopOf="@+id/menuBTN"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout7"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout1">
@@ -437,13 +438,14 @@
     </FrameLayout>
 
 
-
     <FrameLayout
         android:id="@+id/frameLayout3"
         android:layout_width="198dp"
         android:layout_height="170dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout5"
         app:layout_constraintEnd_toStartOf="@+id/frameLayout4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vie1">
@@ -530,7 +532,9 @@
         android:layout_width="198dp"
         android:layout_height="170dp"
         android:layout_marginStart="1dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/borde_blanco"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/frameLayout3"
         app:layout_constraintTop_toBottomOf="@+id/vie1">

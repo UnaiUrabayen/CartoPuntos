@@ -55,19 +55,21 @@ class Activity_magic : AppCompatActivity() {
             dialog.show(supportFragmentManager, "ConfigDialog")
         }
         findViewById<ImageView>(R.id.reloadBTN).setOnClickListener {
+            val nombresJugadores = (1..cantidad).map { "Jugador $it" }
+
             val dialog = MenuDialogReiniciarMagic(
+                jugadores = nombresJugadores,
                 onReiniciarClick = {
-                    // Lógica para reiniciar el juego (por ejemplo, resetear la vida de los jugadores)
-                    reiniciarUI()  // Llama a la función que reinicia la UI de tu juego
+                    reiniciarUI()
                 },
-                onDeclararClick = {
-                    // Lógica para declarar el ganador (puedes hacerlo de acuerdo a las reglas de Magic)
-                    val ganador = detectarGanador()  // Implementa una lógica para detectar al ganador
-                    Toast.makeText(this, "El ganador es el Jugador $ganador", Toast.LENGTH_SHORT).show()
+                onDeclararClick = { ganador ->
+                    Toast.makeText(this, "El ganador es: $ganador", Toast.LENGTH_SHORT).show()
                 }
             )
             dialog.show(supportFragmentManager, "ReiniciarDialog")
         }
+
+
 
 
     }

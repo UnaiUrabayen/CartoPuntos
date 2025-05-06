@@ -14,19 +14,24 @@
         android:id="@+id/imageView"
         android:layout_width="41dp"
         android:layout_height="32dp"
-        android:layout_marginTop="9dp"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:layout_constraintStart_toEndOf="@+id/reloadBTN"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/boton_para_el_menu_de_dados_virtuales"
+        app:layout_constraintBottom_toTopOf="@+id/vie1"
         app:layout_constraintEnd_toStartOf="@+id/menuBTN"
-        app:srcCompat="@mipmap/casino_24dp"
-        android:contentDescription="@string/boton_para_el_menu_de_dados_virtuales" />
-
+        app:layout_constraintStart_toEndOf="@+id/reloadBTN"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:srcCompat="@mipmap/casino_24dp" />
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="340dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/cp_light_text"
+        app:layout_constraintBottom_toTopOf="@+id/menuBTN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -35,30 +40,39 @@
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="7dp"
         android:background="@drawable/borde_blanco"
         android:contentDescription="@string/boton_para_abrir_el_meni_reiniciar_la_partida"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintBottom_toTopOf="@+id/vie1"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout1"
         app:srcCompat="@mipmap/refresh" />
 
     <ImageView
         android:id="@+id/menuBTN"
         android:layout_width="34dp"
         android:layout_height="37dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="31dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/borde_blanco"
         android:contentDescription="@string/boton_para_abrir_el_menu_de_la_partida"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintBottom_toTopOf="@+id/vie1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
         app:srcCompat="@mipmap/trespuntospng" />
 
     <View
         android:id="@+id/vie1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="340dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="2dp"
         android:background="@color/cp_light_text"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <!-- FRAMELAYOUT JUGADOR 1 (CENTRADO ARRIBA) -->
     <FrameLayout
@@ -68,7 +82,7 @@
         android:layout_marginBottom="1dp"
         android:background="@drawable/borde_blanco"
         android:rotation="180"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintBottom_toTopOf="@+id/menuBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -152,27 +166,29 @@
 
 
     <!-- FRAMELAYOUT JUGADOR 2 (ABAJO COMPLETO) -->
+    <!-- FRAMELAYOUT JUGADOR 2 (ABAJO COMPLETO) -->
     <FrameLayout
-        android:id="@+id/frameLayout3"
+        android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="338dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="1dp"
         android:background="@drawable/borde_blanco"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vie1">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageView2b"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"
             android:layout_margin="8dp"
-            android:contentDescription="@string/icono_de_usaurio_jugador_3"
+            android:contentDescription="@string/icono_de_usuario_del_jugador_2"
             app:srcCompat="@drawable/account_circle_24px" />
 
         <LinearLayout
-            android:id="@+id/cuadrante3"
+            android:id="@+id/cuadrante2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -180,11 +196,11 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tv_jugador3"
+                android:id="@+id/tv_jugador2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/jugador3"
+                android:text="@string/jugador_2"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -196,7 +212,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_menos3"
+                    android:id="@+id/btn_menos2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginEnd="16dp"
@@ -205,17 +221,17 @@
                     android:textSize="32sp" />
 
                 <TextView
-                    android:id="@+id/tv_puntosJuj3"
+                    android:id="@+id/tv_puntosJuj2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
-                    android:text="@string/puntosJug3"
+                    android:text="@string/puntosJug2"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btn_mas3"
+                    android:id="@+id/btn_mas2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:background="@color/cp_light_button"
@@ -225,7 +241,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_menu_jugador3"
+            android:id="@+id/btn_menu_jugador2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|end"
@@ -233,4 +249,5 @@
             android:layout_marginBottom="40dp"
             android:background="@mipmap/menu" />
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
