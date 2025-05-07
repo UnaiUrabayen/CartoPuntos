@@ -43,7 +43,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/menuBTN"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_usuario1"
         app:layout_constraintStart_toEndOf="@+id/barraVerticalCentral"
         app:layout_constraintTop_toBottomOf="@+id/vie1"
         app:layout_constraintVertical_bias="0.52" />
@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.521" />
 
     <ImageView
-        android:id="@+id/menuBTN"
+        android:id="@+id/imageView_usuario1"
         android:layout_width="27dp"
         android:layout_height="35dp"
         android:layout_marginTop="4dp"

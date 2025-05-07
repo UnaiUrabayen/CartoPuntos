@@ -82,4 +82,18 @@
     <string name="d20">D20</string>
     <string name="d_x">D(X)</string>
     <string name="menu_de_dados">Menu de dados</string>
+    <string name="ser_el_monarca">Ser el Monarca</string>
+    <string name="tomar_la_iniciativa">Tomar la Iniciativa</string>
+    <string name="cambiar">Cambiar</string>
+    <string name="estado_d_a_noche">Estado Día/Noche:</string>
+    <string name="d_a">Día</string>
+    <string name="_1_1">+1/+1:</string>
+    <string name="veneno">Veneno:</string>
+    <string name="tesoros">Tesoros:</string>
+    <string name="energ_a">Energía:</string>
+    <string name="veneno_cont">0</string>
+    <string name="tesoro_cont">0</string>
+    <string name="energia_cont">0</string>
+    <string name="mas_uno_mas_uno_cont">0</string>
+    <string name="comandante">Comandante</string>
 </resources>

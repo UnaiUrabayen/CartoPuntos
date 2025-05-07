@@ -18,7 +18,7 @@
         android:layout_marginBottom="4dp"
         android:contentDescription="@string/boton_para_el_menu_de_dados_virtuales"
         app:layout_constraintBottom_toTopOf="@+id/vie1"
-        app:layout_constraintEnd_toStartOf="@+id/menuBTN"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_usuario1"
         app:layout_constraintStart_toEndOf="@+id/reloadBTN"
         app:layout_constraintTop_toBottomOf="@+id/view2"
         app:srcCompat="@mipmap/casino_24dp" />
@@ -29,7 +29,7 @@
         android:layout_marginTop="340dp"
         android:layout_marginBottom="5dp"
         android:background="@color/cp_light_text"
-        app:layout_constraintBottom_toTopOf="@+id/menuBTN"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_usuario1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,7 @@
         app:srcCompat="@mipmap/refresh" />
 
     <ImageView
-        android:id="@+id/menuBTN"
+        android:id="@+id/imageView_usuario1"
         android:layout_width="34dp"
         android:layout_height="37dp"
         android:layout_marginTop="2dp"
@@ -82,7 +82,7 @@
         android:layout_marginBottom="1dp"
         android:background="@drawable/borde_blanco"
         android:rotation="180"
-        app:layout_constraintBottom_toTopOf="@+id/menuBTN"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_usuario1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

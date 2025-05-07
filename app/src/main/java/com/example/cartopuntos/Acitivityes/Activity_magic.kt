@@ -3,17 +3,14 @@ package com.example.cartopuntos.Acitivityes
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cartopuntos.Dialogs.DialogoComandanteDamage
 import com.example.cartopuntos.Dialogs.MenuDialogDados
-import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 import com.example.cartopuntos.Logica.JuegoMagic
-import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
 import com.example.cartopuntos.R
-
+import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
+import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 
 class Activity_magic : AppCompatActivity() {
 
@@ -41,9 +38,10 @@ class Activity_magic : AppCompatActivity() {
 
         for (jugador in 1..cantidad) {
             configurarControlesJugador(jugador)
+            configurarMenuJugador(jugador, cantidad)
         }
 
-        findViewById<ImageView>(R.id.menuBTN).setOnClickListener {
+        findViewById<ImageView>(R.id.imageView_usuario1).setOnClickListener {
             val dialog = ConfiguracionMagicDialog { newCantidad, sonidoNuevo, vidaNeg, autoResetNuevo ->
                 val intent = Intent(this, Activity_magic::class.java).apply {
                     putExtra("jugadores", newCantidad)
@@ -56,6 +54,7 @@ class Activity_magic : AppCompatActivity() {
             }
             dialog.show(supportFragmentManager, "ConfigDialog")
         }
+
         findViewById<ImageView>(R.id.reloadBTN).setOnClickListener {
             val nombresJugadores = (1..cantidad).map { "Jugador $it" }
 
@@ -70,6 +69,7 @@ class Activity_magic : AppCompatActivity() {
             )
             dialog.show(supportFragmentManager, "ReiniciarDialog")
         }
+
         findViewById<ImageView>(R.id.imageView).setOnClickListener {
             val dialog = MenuDialogDados { caras ->
                 val resultado = juego.lanzarDado(caras)
@@ -77,10 +77,6 @@ class Activity_magic : AppCompatActivity() {
             }
             dialog.show(supportFragmentManager, "MenuDadosDialog")
         }
-
-
-
-
     }
 
     private fun configurarControlesJugador(jugador: Int) {
@@ -109,6 +105,20 @@ class Activity_magic : AppCompatActivity() {
                     btnMenos.isEnabled = false
                 }
             }
+        }
+    }
+
+    private fun configurarMenuJugador(jugador: Int, cantidad: Int) {
+        val idBtn = resources.getIdentifier("btn_menu_jugador$jugador", "id", packageName)
+        val btnMenu = findViewById<Button?>(idBtn)
+
+        btnMenu?.setOnClickListener {
+            val dialog = DialogoComandanteDamage(
+                jugadorId = jugador,
+                cantidadJugadores = cantidad,
+                juego = juego
+            )
+            dialog.show(supportFragmentManager, "DialogoComandanteDamage")
         }
     }
 
@@ -154,10 +164,8 @@ class Activity_magic : AppCompatActivity() {
             else -> R.layout.view_activity_magic_4
         }
     }
-    private fun detectarGanador(): Int {
-        // Lógica para determinar al ganador, podrías basarlo en las vidas restantes
-        val ganador = juego.getJugadores().maxByOrNull { juego.getVida(it.key)!! }?.key
-        return ganador ?: -1  // Devuelve el ID del ganador, o -1 si no hay ganador
-    }
 
+    private fun detectarGanador(): Int {
+        return juego.getJugadores().maxByOrNull { juego.getVida(it.key) ?: 0 }?.key ?: -1
+    }
 }

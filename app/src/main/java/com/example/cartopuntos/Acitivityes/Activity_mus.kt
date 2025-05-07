@@ -74,7 +74,7 @@ class Activity_mus : AppCompatActivity() {
         }
 
         // Referencia al ImageView menuBTN
-        menuBTN = findViewById(R.id.menuBTN)
+        menuBTN = findViewById(R.id.imageView_usuario1)
 
         // Configurar el click para abrir el diálogo de ajustes de rondas
         menuBTN.setOnClickListener {

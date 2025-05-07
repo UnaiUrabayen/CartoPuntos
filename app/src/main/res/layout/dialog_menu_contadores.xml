@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/cp_light_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menú de Contadores"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+
+            android:paddingBottom="12dp" />
+
+        <!-- Contador de veneno -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/veneno" />
+            <Button
+                android:id="@+id/btn_veneno_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:text="@string/menos" />
+            <TextView
+                android:id="@+id/tv_veneno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/veneno_cont"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_veneno_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="@string/mas" />
+        </LinearLayout>
+
+        <!-- Contador de tesoros -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tesoros" />
+            <Button
+                android:id="@+id/btn_tesoro_menos"
+                android:layout_width="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:layout_height="wrap_content"
+                android:text="@string/menos" />
+            <TextView
+                android:id="@+id/tv_tesoro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tesoro_cont"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_tesoro_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="@string/mas" />
+        </LinearLayout>
+
+        <!-- Contador de energía -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/energ_a" />
+            <Button
+                android:id="@+id/btn_energia_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:text="@string/menos" />
+            <TextView
+                android:id="@+id/tv_energia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/energia_cont"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_energia_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="@string/mas" />
+        </LinearLayout>
+
+        <!-- Contador de +1/+1 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/_1_1" />
+            <Button
+                android:id="@+id/btn_plus_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:text="@string/menos" />
+            <TextView
+                android:id="@+id/tv_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mas_uno_mas_uno_cont"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_plus_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="@string/mas" />
+        </LinearLayout>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Día/Noche -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/estado_d_a_noche" />
+            <TextView
+                android:id="@+id/tv_estado_dia_noche"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d_a" />
+            <Button
+                android:id="@+id/btn_toggle_dia_noche"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_light_button"
+                android:text="@string/cambiar" />
+        </LinearLayout>
+
+        <!-- Botón Monarca -->
+        <Button
+            android:id="@+id/btn_monarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ser_el_monarca"
+            android:background="@color/cp_light_button"
+            android:layout_marginTop="12dp" />
+
+        <!-- Botón Iniciativa -->
+        <Button
+            android:id="@+id/btn_iniciativa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tomar_la_iniciativa"
+            android:background="@color/cp_light_button"
+            android:layout_marginTop="8dp" />
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Daño de Comandante recibido -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daño de comandante recibido"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <!-- Comandante Jugador 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Comandante 1:" />
+            <Button
+                android:id="@+id/btn_cmd1_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:text="-" />
+            <TextView
+                android:id="@+id/tv_cmd1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_cmd1_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="+" />
+        </LinearLayout>
+
+        <!-- Comandante Jugador 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Comandante 2:" />
+            <Button
+                android:id="@+id/btn_cmd2_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team1_primary"
+                android:text="-" />
+            <TextView
+                android:id="@+id/tv_cmd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:padding="8dp" />
+            <Button
+                android:id="@+id/btn_cmd2_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cp_team2_primary"
+                android:text="+" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>
