@@ -117,6 +117,7 @@ class MenuContadoresDialog(
                 jugador.actualizarEstadoDeMuerte()
 
                 if (jugador.vida <= 0) {
+                    jugador.actualizarEstadoDeMuerte()
                     Toast.makeText(requireContext(), "${jugador.nombre} ha muerto", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(requireContext(), "Contadores guardados", Toast.LENGTH_SHORT).show()

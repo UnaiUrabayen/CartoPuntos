@@ -58,9 +58,11 @@ class DialogoComandanteDamage(
                 // Actualizamos el estado de muerte de todos los jugadores, para comprobar si alguien muere
                 for (jugador in jugadores) {
                     jugador.actualizarEstadoDeMuerte()
+                    /*
                     if (jugador.vida == 0) {
                         Toast.makeText(requireContext(), "${jugador.nombre} ha muerto", Toast.LENGTH_SHORT).show()
                     }
+                     */
                 }
 
                 Toast.makeText(requireContext(), "Daño actualizado", Toast.LENGTH_SHORT).show()
