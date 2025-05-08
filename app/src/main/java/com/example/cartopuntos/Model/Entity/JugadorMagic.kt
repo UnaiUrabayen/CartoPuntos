@@ -1,10 +1,8 @@
-package com.example.cartopuntos.Model.Entity
-
 data class JugadorMagic(
-    val id: Int,                // ID del jugador.
-    val nombre: String,         // Nombre del jugador.
-    var vida: Int,              // Vida actual.
-    val vidaInicial: Int = 40,  // Vida inicial (puede cambiarse si se juega con diferentes reglas).
+    val id: Int,
+    val nombre: String,
+    var vida: Int,
+    val vidaInicial: Int = 40,
 
     // Contadores adicionales
     var contadorVeneno: Int = 0,
@@ -14,6 +12,24 @@ data class JugadorMagic(
     var esMonarca: Boolean = false,
     var tieneIniciativa: Boolean = false,
 
+    // Estado de día o noche
+    var esDia: Boolean = true,
+
     // Comandante (daño recibido de otros jugadores)
-    val dañoDeComandantes: MutableMap<Int, Int> = mutableMapOf()// clave: ID del comandante enemigo
-)
+    val dañoDeComandantes: MutableMap<Int, Int> = mutableMapOf() // clave: ID del comandante enemigo
+
+) {
+    fun actualizarEstadoDeMuerte() {
+        if (contadorVeneno >= 10) {
+            vida = 0
+            return
+        }
+
+        for (daño in dañoDeComandantes.values) {
+            if (daño > 21) {
+                vida = 0
+                break
+            }
+        }
+    }
+}

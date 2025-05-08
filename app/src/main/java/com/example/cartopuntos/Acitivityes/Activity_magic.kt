@@ -1,20 +1,23 @@
 package com.example.cartopuntos.Acitivityes
 
+import JugadorMagic
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cartopuntos.Dialogs.DialogoComandanteDamage
+import com.example.cartopuntos.Dialogs.MenuContadoresDialog
 import com.example.cartopuntos.Dialogs.MenuDialogDados
 import com.example.cartopuntos.Logica.JuegoMagic
+
 import com.example.cartopuntos.R
 import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
 import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 
 class Activity_magic : AppCompatActivity() {
 
-    private lateinit var juego: JuegoMagic
+    lateinit var juego: JuegoMagic
     private var sonido = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +41,7 @@ class Activity_magic : AppCompatActivity() {
 
         for (jugador in 1..cantidad) {
             configurarControlesJugador(jugador)
-            configurarMenuJugador(jugador, cantidad)
+            configurarMenuJugador(jugador) // Llamamos a esta función para configurar el menú del jugador
         }
 
         findViewById<ImageView>(R.id.imageView_usuario1).setOnClickListener {
@@ -106,21 +109,30 @@ class Activity_magic : AppCompatActivity() {
                 }
             }
         }
+
+
     }
+    private fun configurarMenuJugador(jugador: Int) {
+        val btnMenuId = resources.getIdentifier("btn_menu_jugador$jugador", "id", packageName)
+        findViewById<Button>(btnMenuId).setOnClickListener {
+            // Obtenemos el jugador correspondiente y su lista de jugadores
+            val jugadorSeleccionado = JugadorMagic(id = jugador, nombre = "Jugador $jugador", vida = juego.getVida(jugador) ?: 40)
+            val listaJugadores = (1..juego.cantidadJugadores).map {
+                JugadorMagic(id = it, nombre = "Jugador $it", vida = juego.getVida(it) ?: 40)
+            }
 
-    private fun configurarMenuJugador(jugador: Int, cantidad: Int) {
-        val idBtn = resources.getIdentifier("btn_menu_jugador$jugador", "id", packageName)
-        val btnMenu = findViewById<Button?>(idBtn)
-
-        btnMenu?.setOnClickListener {
-            val dialog = DialogoComandanteDamage(
-                jugadorId = jugador,
-                cantidadJugadores = cantidad,
-                juego = juego
+            // Mostramos el diálogo de contadores para el jugador seleccionado
+            val dialog = MenuContadoresDialog(
+                jugador = jugadorSeleccionado,
+                listaJugadores = listaJugadores,
+                onContadoresActualizados = {
+                    // Aquí puedes hacer lo que sea necesario cuando los contadores se actualicen.
+                }
             )
-            dialog.show(supportFragmentManager, "DialogoComandanteDamage")
+            dialog.show(supportFragmentManager, "MenuContadoresDialog")
         }
     }
+
 
     private fun onJugadorMuerto(jugador: Int) {
         if (sonido) {

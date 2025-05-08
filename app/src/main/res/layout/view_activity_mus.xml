@@ -161,7 +161,7 @@
             <TextView
                 android:id="@+id/tv_jugador1"
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_height="58dp"
                 android:rotation="90"
                 android:text="@string/jugador__1"
                 android:textSize="18sp"
@@ -205,11 +205,11 @@
             <TextView
                 android:id="@+id/tv_jugador2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
+                android:rotation="270"
                 android:text="@string/jugador_2"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:rotation="270" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -318,7 +318,7 @@
             <TextView
                 android:id="@+id/tv_jugador3"
                 android:layout_width="wrap_content"
-                android:layout_height="41dp"
+                android:layout_height="65dp"
                 android:rotation="90"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
@@ -356,11 +356,11 @@
             <TextView
                 android:id="@+id/tv_jugador4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
+                android:rotation="270"
                 android:text="@string/jugador_4"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:rotation="270" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="120dp"

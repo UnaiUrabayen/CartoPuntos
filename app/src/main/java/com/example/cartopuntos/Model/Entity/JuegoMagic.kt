@@ -1,6 +1,7 @@
 package com.example.cartopuntos.Logica
 
-import com.example.cartopuntos.Model.Entity.JugadorMagic
+import JugadorMagic
+
 
 class JuegoMagic(
     val cantidadJugadores: Int,
