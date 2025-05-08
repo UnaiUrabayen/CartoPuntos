@@ -160,8 +160,8 @@
 
             <TextView
                 android:id="@+id/tv_jugador1"
-                android:layout_width="102dp"
-                android:layout_height="56dp"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
                 android:rotation="90"
                 android:text="@string/jugador__1"
                 android:textSize="18sp"
@@ -317,8 +317,8 @@
 
             <TextView
                 android:id="@+id/tv_jugador3"
-                android:layout_width="96dp"
-                android:layout_height="62dp"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
                 android:rotation="90"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
