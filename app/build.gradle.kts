@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.gridlayout)
+    implementation(libs.androidx.constraintlayout.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -86,6 +87,8 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2")
+    //implementation ('com.cloudinary:kotlin-url-gen:1.10.0')
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
 
 

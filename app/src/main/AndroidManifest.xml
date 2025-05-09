@@ -28,7 +28,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Acitivityes.MenuDialogFragment"
+            android:name=".Utils.MenuDialogFragment"
             android:exported="false" />
         <!-- SplashActivity como la actividad principal -->
         <activity
@@ -44,6 +44,10 @@
         </activity> <!-- Otras actividades -->
         <activity
             android:name=".Acitivityes.Activity_plantillas"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Acitivityes.CrearPlantillaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

@@ -96,4 +96,14 @@
     <string name="energia_cont">0</string>
     <string name="mas_uno_mas_uno_cont">0</string>
     <string name="comandante">Comandante</string>
+    <string name="crear_nueva_plantilla">Crear nueva plantilla</string>
+    <string name="guardar_perfil">Guardar Perfil</string>
+    <string name="seleccionar_fondo">Seleccionar Fondo</string>
+    <string name="seleccionar_foto_de_perfil">Seleccionar Foto de Perfil</string>
+    <string name="nombre_del_jugador">Nombre del jugador</string>
+    <string name="imagne_de_fondo_del_taptete">Imagne de fondo del taptete</string>
+    <string name="imagen_de_foto_de_perfil">Imagen de foto de perfil</string>
+    <string name="vista_previa_de_plantilla">Vista Previa de Plantilla</string>
+    <string name="crear_plantilla">Crear Plantilla</string>
+    <string name="imagen_del_fondo_del_tapete">Imagen del fondo del tapete</string>
 </resources>

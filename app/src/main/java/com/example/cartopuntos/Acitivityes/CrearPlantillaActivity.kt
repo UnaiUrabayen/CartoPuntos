@@ -1,0 +1,128 @@
+package com.example.cartopuntos.Acitivityes
+
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.cartopuntos.R
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+
+class CrearPlantillaActivity : AppCompatActivity() {
+
+    private lateinit var imageViewPerfil: ImageView
+    private lateinit var imageViewFondo: ImageView
+    private lateinit var btnElegirFotoPerfil: Button
+    private lateinit var btnElegirFondo: Button
+    private lateinit var btnGuardarPerfil: Button
+    private lateinit var etNombreJugador: EditText
+    private var imageUriPerfil: Uri? = null
+    private var imageUriFondo: Uri? = null
+
+    private val clientId = "a52211ddb770dbd"
+
+    private val REQUEST_CODE_PROFILE = 100
+    private val REQUEST_CODE_BACKGROUND = 200
+
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.item_plantilla)
+
+        imageViewPerfil = findViewById(R.id.imgVistaPreviaPerfil)
+        imageViewFondo = findViewById(R.id.imgVistaPreviaFondo)
+        btnElegirFotoPerfil = findViewById(R.id.btnElegirFotoPerfil)
+        btnElegirFondo = findViewById(R.id.btnElegirFondo)
+        btnGuardarPerfil = findViewById(R.id.btnGuardarPerfil)
+        etNombreJugador = findViewById(R.id.etNombreJugador)
+
+        btnElegirFotoPerfil.setOnClickListener {
+            openGallery(REQUEST_CODE_PROFILE)
+        }
+
+        btnElegirFondo.setOnClickListener {
+            openGallery(REQUEST_CODE_BACKGROUND)
+        }
+
+        btnGuardarPerfil.setOnClickListener {
+            val nombreJugador = etNombreJugador.text.toString()
+            if (nombreJugador.isEmpty() || imageUriPerfil == null || imageUriFondo == null) {
+                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+            } else {
+                uploadImage(imageUriPerfil!!, "profile")
+                uploadImage(imageUriFondo!!, "background")
+                Toast.makeText(this, "Perfil guardado exitosamente", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
+    }
+
+    private fun openGallery(requestCode: Int) {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, requestCode)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            val selectedImageUri: Uri = data.data!!
+            if (requestCode == REQUEST_CODE_PROFILE) {
+                imageUriPerfil = selectedImageUri
+                imageViewPerfil.setImageURI(selectedImageUri)
+            } else if (requestCode == REQUEST_CODE_BACKGROUND) {
+                imageUriFondo = selectedImageUri
+                imageViewFondo.setImageURI(selectedImageUri)
+            }
+        }
+    }
+
+    private fun uploadImage(uri: Uri, type: String) {
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+
+        val client = OkHttpClient()
+
+        val requestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("image", "image.jpg", RequestBody.create("image/jpeg".toMediaTypeOrNull(), byteArray))
+            .build()
+
+        val request = Request.Builder()
+            .url("https://api.imgur.com/3/image")
+            .addHeader("Authorization", "Client-ID $clientId")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : okhttp3.Callback {
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                if (!response.isSuccessful) {
+                    runOnUiThread {
+                        Toast.makeText(this@CrearPlantillaActivity, "Error al subir la imagen", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: okhttp3.Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@CrearPlantillaActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+    }
+}
