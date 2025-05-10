@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.cartopuntos.R
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -33,12 +34,15 @@ class PlantillasAdapter(
         Glide.with(context)
             .load(plantilla.urlFondo)
             .placeholder(R.drawable.placeholder_image) // Add a placeholder
+
             .into(holder.imgFondo)
 
         // Load profile image using Glide with placeholder
         Glide.with(context)
             .load(plantilla.fotoPerfilUrl)
-            .placeholder(R.drawable.placeholder_image) // Add a placeholder
+            .placeholder(R.drawable.account_circle_24px)
+            .transform(RoundedCorners(20))
+            .circleCrop()  // <-- Esto hace la imagen circular
             .into(holder.imgPerfil)
 
         // Set click listener for the delete button
