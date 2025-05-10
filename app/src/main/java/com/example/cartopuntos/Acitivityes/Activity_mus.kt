@@ -219,7 +219,11 @@ class Activity_mus : AppCompatActivity() {
         // Cargar ícono de jugador en icon_plantilla_jugX
         val idIcon = resources.getIdentifier("icon_plantilla_jug$numero", "id", packageName)
         val icono = findViewById<ImageView>(idIcon)
-        Glide.with(this).load(plantilla.fotoPerfilUrl).into(icono)
+        Glide.with(this)
+            .load(plantilla.fotoPerfilUrl)
+            .circleCrop() // <-- Esto la hace redonda
+            .into(icono)
+
 
         // Setear nombre del jugador en tv_jugadorX
         val idTV = resources.getIdentifier("tv_jugador$numero", "id", packageName)
