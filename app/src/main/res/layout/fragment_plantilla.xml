@@ -21,8 +21,6 @@
         android:contentDescription="@string/fondo_escogido_por_el_jugador" />
 
     <!-- Nombre de jugador -->
-
-    <!-- Imagen de perfil con tamaño fijo -->
     <TextView
         android:id="@+id/tvTituloPlantilla"
         android:layout_width="0dp"
@@ -43,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Imagen de perfil con tamaño fijo -->
     <ImageView
         android:id="@+id/imgPerfil"
         android:layout_width="40dp"
@@ -55,7 +54,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTituloPlantilla"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTituloPlantilla" />
-
 
     <!-- Botón de eliminar -->
     <Button
@@ -70,5 +68,19 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Botón de seleccionar -->
+    <Button
+        android:id="@+id/btnSeleccionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="@string/seleccionar"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnEliminar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Acitivityes.Activity_plantillas"
+    tools:context=".Acitivityes.ActivityPlantillas"
     android:background="@color/cp_light_primary">
 
     <!-- Titulo o texto que indica que es la vista previa de las plantillas -->

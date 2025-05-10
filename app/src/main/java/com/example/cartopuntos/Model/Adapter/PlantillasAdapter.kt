@@ -1,7 +1,7 @@
-package com.example.cartopuntos.Model.Entity
+package com.example.cartopuntos.model.adapter
 
 import android.content.Context
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +11,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.example.cartopuntos.Acitivityes.Activity_mus
+import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PlantillasAdapter(
     private val context: Context,
-    private val plantillas: MutableList<PlantillaPerfil>  // mutable para poder eliminar
+    private val plantillas: MutableList<PlantillaPerfil>,  // mutable para poder eliminar
+    private val isDesdeJuego: Boolean  // Indica si se debe mostrar el botón "Seleccionar"
 ) : RecyclerView.Adapter<PlantillasAdapter.PlantillaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantillaViewHolder {
@@ -34,7 +37,6 @@ class PlantillasAdapter(
         Glide.with(context)
             .load(plantilla.urlFondo)
             .placeholder(R.drawable.placeholder_image) // Add a placeholder
-
             .into(holder.imgFondo)
 
         // Load profile image using Glide with placeholder
@@ -45,7 +47,7 @@ class PlantillasAdapter(
             .circleCrop()  // <-- Esto hace la imagen circular
             .into(holder.imgPerfil)
 
-        // Set click listener for the delete button
+        // Configurar el botón de eliminar
         holder.btnEliminar.setOnClickListener {
             val pos = holder.adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
@@ -54,21 +56,35 @@ class PlantillasAdapter(
                 val plantillaId = plantillaEliminar.idPlantilla
                 val usuarioId = plantillaEliminar.uidUsuario
 
-                // Delete the plantilla from Firestore
+                // Eliminar la plantilla de Firestore
                 db.collection("usuarios")
                     .document(usuarioId)
                     .collection("plantillas")
                     .document(plantillaId)
                     .delete()
                     .addOnSuccessListener {
-                        // Update the local list and notify the adapter
+                        // Actualizar la lista local y notificar al adaptador
                         plantillas.removeAt(pos)
-                        notifyItemRemoved(pos)  // Notify the removal of the item
+                        notifyItemRemoved(pos)  // Notificar que el elemento fue eliminado
                     }
                     .addOnFailureListener { e ->
-                        Log.e("PlantillasAdapter", "Error eliminando plantilla: ", e)
+                        // Manejar el error
                     }
             }
+        }
+
+        // Mostrar/Ocultar el botón de seleccionar dependiendo del origen
+        if (isDesdeJuego) {
+            holder.btnSeleccionar.visibility = View.VISIBLE
+            holder.btnSeleccionar.setOnClickListener {
+                if (context is com.example.cartopuntos.activities.ActivityPlantillas) {
+                    context.devolverPlantillaSeleccionada(plantilla)
+                }
+            }
+
+
+        } else {
+            holder.btnSeleccionar.visibility = View.GONE
         }
     }
 
@@ -80,5 +96,6 @@ class PlantillasAdapter(
         val imgPerfil: ImageView = itemView.findViewById(R.id.imgPerfil)
         val tvTituloPlantilla: TextView = itemView.findViewById(R.id.tvTituloPlantilla)
         val btnEliminar: Button = itemView.findViewById(R.id.btnEliminar)
+        val btnSeleccionar: Button = itemView.findViewById(R.id.btnSeleccionar)  // Nuevo botón para seleccionar
     }
 }

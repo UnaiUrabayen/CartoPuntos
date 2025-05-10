@@ -2,10 +2,12 @@ package com.example.cartopuntos.Model.Entity
 
 import java.util.UUID
 
+import java.io.Serializable
+
 data class PlantillaPerfil(
-    var idPlantilla: String = "",
-    var uidUsuario: String = "",
-    var nombreJugador: String = "",
-    var fotoPerfilUrl: String = "",
-    var urlFondo: String = ""
-)
+    val idPlantilla: String = "",
+    val uidUsuario: String = "",
+    val nombreJugador: String = "",
+    val urlFondo: String = "",
+    val fotoPerfilUrl: String = ""
+) : Serializable

@@ -108,4 +108,5 @@
     <string name="imagen_del_fondo_del_tapete">Imagen del fondo del tapete</string>
     <string name="fondo_escogido_por_el_jugador">fondo escogido por el jugador</string>
     <string name="eliminar">Eliminar</string>
+    <string name="seleccionar">Seleccionar</string>
 </resources>

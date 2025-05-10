@@ -89,7 +89,7 @@
 
         <!-- Icono de usuario arriba -->
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/icon_plantilla_jug1"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"

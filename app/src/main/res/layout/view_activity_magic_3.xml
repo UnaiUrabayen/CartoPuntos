@@ -166,7 +166,7 @@
 
         <!-- ICONO DEL JUGADOR -->
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/icon_plantilla_jug1"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|end"
@@ -257,7 +257,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2_2"
+            android:id="@+id/icon_plantilla_jug2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"
@@ -280,7 +280,7 @@
 
         <!-- Ícono de usuario arriba a la izquierda -->
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/icon_plantilla_jug3"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"

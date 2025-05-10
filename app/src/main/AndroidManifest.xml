@@ -43,11 +43,15 @@
             </intent-filter>
         </activity> <!-- Otras actividades -->
         <activity
-            android:name=".Acitivityes.ActivityPlantillas"
+            android:name=".activities.ActivityPlantillas"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Acitivityes.CrearPlantillaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Model.Service.ObtnerPlantilla"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
