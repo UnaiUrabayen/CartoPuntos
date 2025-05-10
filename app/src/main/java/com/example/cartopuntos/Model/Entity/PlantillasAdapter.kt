@@ -26,16 +26,22 @@ class PlantillasAdapter(
     override fun onBindViewHolder(holder: PlantillaViewHolder, position: Int) {
         val plantilla = plantillas[position]
 
+        // Set the title of the template
         holder.tvTituloPlantilla.text = plantilla.nombreJugador
 
+        // Load background image using Glide with placeholder
         Glide.with(context)
             .load(plantilla.urlFondo)
+            .placeholder(R.drawable.placeholder_image) // Add a placeholder
             .into(holder.imgFondo)
 
+        // Load profile image using Glide with placeholder
         Glide.with(context)
             .load(plantilla.fotoPerfilUrl)
+            .placeholder(R.drawable.placeholder_image) // Add a placeholder
             .into(holder.imgPerfil)
 
+        // Set click listener for the delete button
         holder.btnEliminar.setOnClickListener {
             val pos = holder.adapterPosition
             if (pos != RecyclerView.NO_POSITION) {
@@ -44,15 +50,16 @@ class PlantillasAdapter(
                 val plantillaId = plantillaEliminar.idPlantilla
                 val usuarioId = plantillaEliminar.uidUsuario
 
+                // Delete the plantilla from Firestore
                 db.collection("usuarios")
                     .document(usuarioId)
                     .collection("plantillas")
                     .document(plantillaId)
                     .delete()
                     .addOnSuccessListener {
+                        // Update the local list and notify the adapter
                         plantillas.removeAt(pos)
-                        notifyItemRemoved(pos)
-                        notifyItemRangeChanged(pos, plantillas.size)
+                        notifyItemRemoved(pos)  // Notify the removal of the item
                     }
                     .addOnFailureListener { e ->
                         Log.e("PlantillasAdapter", "Error eliminando plantilla: ", e)
@@ -63,6 +70,7 @@ class PlantillasAdapter(
 
     override fun getItemCount(): Int = plantillas.size
 
+    // ViewHolder class to hold references to UI components
     inner class PlantillaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgFondo: ImageView = itemView.findViewById(R.id.imgFondo)
         val imgPerfil: ImageView = itemView.findViewById(R.id.imgPerfil)

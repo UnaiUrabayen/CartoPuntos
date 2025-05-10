@@ -43,7 +43,7 @@
             </intent-filter>
         </activity> <!-- Otras actividades -->
         <activity
-            android:name=".Acitivityes.Activity_plantillas"
+            android:name=".Acitivityes.ActivityPlantillas"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

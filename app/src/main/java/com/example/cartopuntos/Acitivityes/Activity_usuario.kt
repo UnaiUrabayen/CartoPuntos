@@ -67,7 +67,7 @@ class Activity_usuario : AppCompatActivity() {
 
         // Ir a la pantalla de plantillas
         btnPlantillas.setOnClickListener {
-            val intent = Intent(this, Activity_plantillas::class.java)
+            val intent = Intent(this, ActivityPlantillas::class.java)
             startActivity(intent)
         }
 
