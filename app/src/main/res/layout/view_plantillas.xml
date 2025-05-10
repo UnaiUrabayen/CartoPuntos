@@ -5,6 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Acitivityes.Activity_plantillas">
+    tools:context=".Acitivityes.ActivityPlantillas"
+    android:background="@color/cp_light_primary">
 
+    <!-- Titulo o texto que indica que es la vista previa de las plantillas -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/plantillas"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- RecyclerView para mostrar las plantillas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPlantillas"
+        android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="15dp"
+    android:padding="8dp"
+    app:layout_constraintBottom_toTopOf="@+id/btnCrearPlantilla"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <!-- Botón de Crear Plantilla -->
+    <Button
+        android:id="@+id/btnCrearPlantilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/crear_plantilla"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/cp_light_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

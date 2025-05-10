@@ -1,22 +1,30 @@
 package com.example.cartopuntos.Acitivityes
 
-
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
 import com.example.cartopuntos.Utils.AjustesDialogFragment
 import com.example.cartopuntos.Utils.MenuDialogReiniciarMus
 import com.example.cartopuntos.Model.Entity.PartidaMus
+import com.example.cartopuntos.Model.Entity.JugadorMus
+import com.example.cartopuntos.Model.Entity.PlantillaPerfil
+import com.example.cartopuntos.Model.Service.ObtnerPlantilla
 import com.example.cartopuntos.R
-
-import kotlinx.coroutines.launch
+import com.example.cartopuntos.activities.ActivityPlantillas
 import java.util.UUID
+import com.bumptech.glide.request.transition.Transition
+
 
 class Activity_mus : AppCompatActivity() {
 
@@ -27,6 +35,17 @@ class Activity_mus : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_activity_mus)
+
+        // Inicializar la partida con jugadores y plantillas
+        val plantilla1 = PlantillaPerfil(idPlantilla = "plantilla1", uidUsuario = "uid123", nombreJugador = "Jugador 1", fotoPerfilUrl = "url1", urlFondo = "fondo1")
+        val plantilla2 = PlantillaPerfil(idPlantilla = "plantilla2", uidUsuario = "uid456", nombreJugador = "Jugador 2", fotoPerfilUrl = "url2", urlFondo = "fondo2")
+        val plantilla3 = PlantillaPerfil(idPlantilla = "plantilla3", uidUsuario = "uid789", nombreJugador = "Jugador 3", fotoPerfilUrl = "url3", urlFondo = "fondo3")
+        val plantilla4 = PlantillaPerfil(idPlantilla = "plantilla4", uidUsuario = "uid101", nombreJugador = "Jugador 4", fotoPerfilUrl = "url4", urlFondo = "fondo4")
+
+        val jugador1 = JugadorMus(idJugador = "1", nombreJugador = "Jugador 1", uidUsuario = "uid123", plantilla = plantilla1)
+        val jugador2 = JugadorMus(idJugador = "2", nombreJugador = "Jugador 2", uidUsuario = "uid456", plantilla = plantilla2)
+        val jugador3 = JugadorMus(idJugador = "3", nombreJugador = "Jugador 3", uidUsuario = "uid789", plantilla = plantilla3)
+        val jugador4 = JugadorMus(idJugador = "4", nombreJugador = "Jugador 4", uidUsuario = "uid101", plantilla = plantilla4)
 
         partida = PartidaMus(
             id = UUID.randomUUID().toString(),
@@ -41,8 +60,10 @@ class Activity_mus : AppCompatActivity() {
             victoriasEquipo2 = 0,
             equipoGanador = null,
             nombrePartida = "Partida X",
-            cantidadRondas = 3 // Valor por defecto
+            cantidadRondas = 3,
+            jugadores = listOf(jugador1, jugador2, jugador3, jugador4)
         )
+
 
         val tvJ1 = findViewById<TextView>(R.id.tv_puntosJuj1)
         val tvJ2 = findViewById<TextView>(R.id.tv_puntosJuj2)
@@ -60,27 +81,20 @@ class Activity_mus : AppCompatActivity() {
         val btnMas4 = findViewById<Button>(R.id.btn_mas4)
         val btnMenos4 = findViewById<Button>(R.id.btn_menos4)
 
-
         val reloadButton = findViewById<ImageView>(R.id.reloadBTN)
         reloadButton.setOnClickListener {
             val menuDialog = MenuDialogReiniciarMus(
                 onReiniciarClick = { reiniciarPartida() },
                 onDeclararClick = {
-                    // Mostrar el diálogo para declarar el ganador
                     mostrarDialogoDeclararGanador()
                 }
             )
             menuDialog.show(supportFragmentManager, "MenuDialog")
         }
 
-        // Referencia al ImageView menuBTN
         menuBTN = findViewById(R.id.imageView_usuario1)
-
-        // Configurar el click para abrir el diálogo de ajustes de rondas
         menuBTN.setOnClickListener {
-            // Mostrar el nuevo DialogFragment para ajustes de rondas
             val ajustesDialogFragment = AjustesDialogFragment { cantidadRondas ->
-                // Aquí recibimos el valor de rondas seleccionado
                 partida.cantidadRondas = cantidadRondas
                 Toast.makeText(this, "Rondas cambiadas a $cantidadRondas", Toast.LENGTH_SHORT).show()
             }
@@ -142,7 +156,82 @@ class Activity_mus : AppCompatActivity() {
                 tvJ4.text = "${partida.puntosJugador4} H"
             }
         }
+        val cuadrante1 = findViewById<LinearLayout>(R.id.cuadrante1)
+        val cuadrante2 = findViewById<LinearLayout>(R.id.cuadrante2)
+        val cuadrante3 = findViewById<LinearLayout>(R.id.cuadrante3)
+        val cuadrante4 = findViewById<LinearLayout>(R.id.cuadrante4)
+
+
+        // Configuración de los íconos para seleccionar plantillas
+        val iconJugador1 = findViewById<ImageView>(R.id.icon_plantilla_jug1)
+        val iconJugador2 = findViewById<ImageView>(R.id.icon_plantilla_jug2)
+        val iconJugador3 = findViewById<ImageView>(R.id.icon_plantilla_jug3)
+        val iconJugador4 = findViewById<ImageView>(R.id.icon_plantilla_jug4)
+
+        iconJugador1.setOnClickListener { openPlantillasAdapter(1) }
+        iconJugador2.setOnClickListener { openPlantillasAdapter(2) }
+        iconJugador3.setOnClickListener { openPlantillasAdapter(3) }
+        iconJugador4.setOnClickListener { openPlantillasAdapter(4) }
+
+
+
+
+
+
     }
+
+    private var jugadorSeleccionado = 0
+
+    private fun openPlantillasAdapter(jugadorId: Int) {
+        jugadorSeleccionado = jugadorId
+        val intent = Intent(this, ActivityPlantillas::class.java)
+        intent.putExtra("ORIGEN", "juego")
+        startActivityForResult(intent, 100)  // Códigos tipo 100 son arbitrarios
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            val plantilla = data?.getSerializableExtra("PLANTILLA") as? PlantillaPerfil
+            plantilla?.let {
+                partida.jugadores[jugadorSeleccionado - 1].plantilla = it
+                actualizarVistaJugador(jugadorSeleccionado, it)
+            }
+        }
+
+}
+    private fun actualizarVistaJugador(numero: Int, plantilla: PlantillaPerfil) {
+        // Cargar imagen de fondo en cuadranteX
+        val idFondo = resources.getIdentifier("cuadrante$numero", "id", packageName)
+        val cuadrante = findViewById<LinearLayout>(idFondo)
+
+// Establecer el fondo del LinearLayout
+        Glide.with(this)
+            .load(plantilla.urlFondo)
+            .into(object : SimpleTarget<Drawable>() {
+                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                    cuadrante.background = resource
+                }
+            })
+
+
+        // Cargar ícono de jugador en icon_plantilla_jugX
+        val idIcon = resources.getIdentifier("icon_plantilla_jug$numero", "id", packageName)
+        val icono = findViewById<ImageView>(idIcon)
+        Glide.with(this)
+            .load(plantilla.fotoPerfilUrl)
+            .circleCrop() // <-- Esto la hace redonda
+            .into(icono)
+
+
+        // Setear nombre del jugador en tv_jugadorX
+        val idTV = resources.getIdentifier("tv_jugador$numero", "id", packageName)
+        val tvJugador = findViewById<TextView>(idTV)
+        tvJugador.text = plantilla.nombreJugador
+    }
+
+
 
     private fun controlarPuntoJugador1(tvJ4: TextView) {
         if (partida.puntosJugador1 == 5) {
@@ -199,21 +288,15 @@ class Activity_mus : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setMessage("$equipo ha ganado el juego. ¿Quieres guardar la partida?")
             .setCancelable(false)
-            .setPositiveButton("Aceptar") { _, _ ->
-                // Guardar la partida en la base de datos de manera asíncrona
-                lifecycleScope.launch {
-
-                }
-            }
+            .setPositiveButton("Aceptar") { _, _ -> }
             .setNegativeButton("Cancelar", null)
             .show()
-
         reiniciarPartida()
     }
 
     private fun reiniciarPartida() {
         partida = PartidaMus(
-            id = UUID.randomUUID().toString(), // Genera un nuevo ID único para la nueva partida
+            id = UUID.randomUUID().toString(),
             fecha = System.currentTimeMillis(),
             puntosJugador1 = 0,
             puntosJugador2 = 0,
@@ -225,8 +308,7 @@ class Activity_mus : AppCompatActivity() {
             victoriasEquipo2 = 0,
             equipoGanador = null,
             nombrePartida = "Partida X",
-            cantidadRondas =partida.cantidadRondas //guardar ajuste
-
+            cantidadRondas = partida.cantidadRondas
         )
         resetearContadores()
         findViewById<TextView>(R.id.contadorPunto1).text = "0"
@@ -238,7 +320,6 @@ class Activity_mus : AppCompatActivity() {
         partida.puntosJugador2 = 0
         partida.puntosJugador3 = 0
         partida.puntosJugador4 = 0
-
         findViewById<TextView>(R.id.tv_puntosJuj1).text = "0 T"
         findViewById<TextView>(R.id.tv_puntosJuj2).text = "0 H"
         findViewById<TextView>(R.id.tv_puntosJuj3).text = "0 T"
@@ -251,34 +332,13 @@ class Activity_mus : AppCompatActivity() {
         tvJ3.text = "${partida.puntosJugador3} T"
         tvJ4.text = "${partida.puntosJugador4} H"
     }
+
     private fun mostrarDialogoDeclararGanador() {
-        val opcionesGanador = arrayOf("Equipo 1", "Equipo 2", "Cancelar")
-
-        // Crear el diálogo con las opciones
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("¿Quién ha ganado?")
-        builder.setItems(opcionesGanador) { dialog, which ->
-            when (which) {
-                0 -> {
-                    // Equipo 1 ganó
-                    partida.equipoGanador = "Equipo 1"
-                    partida.victoriasEquipo1++
-                    mostrarMensajeVictoria("Equipo 1")
-                }
-                1 -> {
-                    // Equipo 2 ganó
-                    partida.equipoGanador = "Equipo 2"
-                    partida.victoriasEquipo2++
-                    mostrarMensajeVictoria("Equipo 2")
-                }
-                2 -> {
-                    // Cancelar, no hace nada
-                    dialog.dismiss()
-                }
-            }
-        }
-        builder.show()
+        val ganador = if (partida.puntosEquipo1 > partida.puntosEquipo2) "Equipo 1" else "Equipo 2"
+        AlertDialog.Builder(this)
+            .setMessage("$ganador ha ganado. ¿Quieres continuar?")
+            .setPositiveButton("Aceptar", null)
+            .setNegativeButton("Cancelar", null)
+            .show()
     }
-
-
 }

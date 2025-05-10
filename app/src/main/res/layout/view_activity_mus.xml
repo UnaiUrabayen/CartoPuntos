@@ -154,14 +154,16 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button_team2"
                     android:text="@string/mas"
+
                     android:rotation="90"
                     android:textSize="32sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_jugador1"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_width="94dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_negro_transparente"
                 android:rotation="90"
                 android:text="@string/jugador__1"
                 android:textSize="18sp"
@@ -169,7 +171,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/icon_plantilla_jug1"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|end"
@@ -206,10 +208,11 @@
                 android:id="@+id/tv_jugador2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:rotation="270"
                 android:text="@string/jugador_2"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:rotation="270" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -250,7 +253,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2_2"
+            android:id="@+id/icon_plantilla_jug2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"
@@ -317,8 +320,9 @@
 
             <TextView
                 android:id="@+id/tv_jugador3"
-                android:layout_width="wrap_content"
-                android:layout_height="41dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_negro_transparente"
                 android:rotation="90"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
@@ -326,7 +330,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/icon_plantilla_jug3"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|end"
@@ -355,12 +359,13 @@
 
             <TextView
                 android:id="@+id/tv_jugador4"
-                android:layout_width="wrap_content"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/fondo_negro_transparente"
+                android:rotation="270"
                 android:text="@string/jugador_4"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:rotation="270" />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -401,7 +406,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/icon_plantilla_jug4"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|start"

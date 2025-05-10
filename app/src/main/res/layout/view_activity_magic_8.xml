@@ -165,7 +165,7 @@
 
         <!-- ICONO DEL JUGADOR -->
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/icon_plantilla_jug1"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="top|end"
@@ -253,7 +253,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView2_2"
+            android:id="@+id/icon_plantilla_jug2"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="top|start"
@@ -515,7 +515,7 @@
             android:rotation="90" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/icon_plantilla_jug3"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|end"
@@ -606,7 +606,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/icon_plantilla_jug4"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|start"
