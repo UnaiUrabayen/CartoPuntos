@@ -19,7 +19,6 @@ import com.example.cartopuntos.Utils.MenuDialogReiniciarMus
 import com.example.cartopuntos.Model.Entity.PartidaMus
 import com.example.cartopuntos.Model.Entity.JugadorMus
 import com.example.cartopuntos.Model.Entity.PlantillaPerfil
-import com.example.cartopuntos.Model.Service.ObtnerPlantilla
 import com.example.cartopuntos.R
 import com.example.cartopuntos.activities.ActivityPlantillas
 import java.util.UUID

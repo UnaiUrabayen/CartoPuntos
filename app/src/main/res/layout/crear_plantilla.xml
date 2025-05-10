@@ -37,7 +37,7 @@
         android:hint="@string/nombre_del_jugador"
         android:inputType="textPersonName"
         android:layout_marginTop="16dp"
-        android:maxLength="20"
+        android:maxLength="15"
         android:background="@android:color/white"
         android:padding="12dp"
         android:textColor="@android:color/black" />

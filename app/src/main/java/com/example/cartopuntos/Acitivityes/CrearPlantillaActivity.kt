@@ -185,6 +185,8 @@ class CrearPlantillaActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 runOnUiThread {
                     Toast.makeText(this, "Plantilla guardada correctamente", Toast.LENGTH_SHORT).show()
+                    val intent = Intent()
+                    setResult(RESULT_OK, intent)
                     finish()
                 }
             }

@@ -13,6 +13,7 @@ import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
 import com.example.cartopuntos.model.adapter.PlantillasAdapter
 
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -49,7 +50,15 @@ class ActivityPlantillas : AppCompatActivity() {
         val btnCrearPlantilla = findViewById<Button>(R.id.btnCrearPlantilla)
         btnCrearPlantilla.setOnClickListener {
             val intent = Intent(this, CrearPlantillaActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 123)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 123 && resultCode == RESULT_OK) {
+            // Si regresamos de CrearPlantillaActivity y el resultado es OK,
+            // volvemos a cargar las plantillas desde Firebase
+            obtenerPlantillasDesdeFirebase()
         }
     }
 
