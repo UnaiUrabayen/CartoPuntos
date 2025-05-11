@@ -37,6 +37,7 @@ class PlantillasAdapter(
         Glide.with(context)
             .load(plantilla.urlFondo)
             .placeholder(R.drawable.placeholder_image) // Add a placeholder
+            .transform(RoundedCorners(80))
             .into(holder.imgFondo)
 
         // Load profile image using Glide with placeholder
