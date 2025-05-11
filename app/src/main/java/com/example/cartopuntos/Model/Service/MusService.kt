@@ -69,9 +69,21 @@ class MusService {
                 val partidas = mutableListOf<PartidaMus>()
                 for (document in querySnapshot.documents) {
                     val partida = document.toObject(PartidaMus::class.java)
+
+                    // Verificación de los campos de la partida y el ID
                     if (partida != null) {
-                        partidas.add(partida)
+                        Log.d("MusService", "Partida obtenida: ${partida.nombrePartida}, ID: ${partida.id}")
+                        if (partida.id.isNotEmpty()) {
+                            partidas.add(partida)
+                        } else {
+                            Log.e("MusService", "Partida con ID vacío encontrada, no se añadirá.")
+                        }
+                    } else {
+                        Log.e("MusService", "No se pudo convertir el documento a PartidaMus. Documento: $document")
                     }
+                }
+                if (partidas.isEmpty()) {
+                    Log.d("MusService", "No se encontraron partidas para el usuario.")
                 }
                 onSuccess(partidas)
             }
@@ -79,6 +91,33 @@ class MusService {
                 onFailure(exception)
             }
     }
+    fun obtenerPartidaPorId(
+        id: String,
+        onSuccess: (PartidaMus) -> Unit,
+        onFailure: () -> Unit
+    ) {
+        FirebaseFirestore.getInstance().collection("partidasMus")
+            .document(id)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val partida = document.toObject(PartidaMus::class.java)
+                    if (partida != null) {
+                        partida.id = document.id
+                        onSuccess(partida)
+                    } else {
+                        onFailure()
+                    }
+                } else {
+                    onFailure()
+                }
+            }
+            .addOnFailureListener {
+                onFailure()
+            }
+    }
+
+
 
 
 }

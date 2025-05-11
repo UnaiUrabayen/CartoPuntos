@@ -23,6 +23,7 @@ import com.example.cartopuntos.R
 import com.example.cartopuntos.activities.ActivityPlantillas
 import java.util.UUID
 import com.bumptech.glide.request.transition.Transition
+import com.example.cartopuntos.Model.Adapter.PartidaAdapter
 import com.example.cartopuntos.Model.Service.MusService
 import com.google.firebase.auth.FirebaseAuth
 
@@ -31,41 +32,35 @@ class Activity_mus : AppCompatActivity() {
 
     private lateinit var partida: PartidaMus
     private lateinit var menuBTN: ImageView
+    private  var partidaAdapter: PartidaAdapter? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_activity_mus)
 
-        // Inicializar la partida con jugadores y plantillas
-        val plantilla1 = PlantillaPerfil(idPlantilla = "plantilla1", uidUsuario = "uid123", nombreJugador = "Jugador 1", fotoPerfilUrl = "url1", urlFondo = "fondo1")
-        val plantilla2 = PlantillaPerfil(idPlantilla = "plantilla2", uidUsuario = "uid456", nombreJugador = "Jugador 2", fotoPerfilUrl = "url2", urlFondo = "fondo2")
-        val plantilla3 = PlantillaPerfil(idPlantilla = "plantilla3", uidUsuario = "uid789", nombreJugador = "Jugador 3", fotoPerfilUrl = "url3", urlFondo = "fondo3")
-        val plantilla4 = PlantillaPerfil(idPlantilla = "plantilla4", uidUsuario = "uid101", nombreJugador = "Jugador 4", fotoPerfilUrl = "url4", urlFondo = "fondo4")
 
-        val jugador1 = JugadorMus(idJugador = "1", nombreJugador = "Jugador 1", uidUsuario = "uid123", plantilla = plantilla1)
-        val jugador2 = JugadorMus(idJugador = "2", nombreJugador = "Jugador 2", uidUsuario = "uid456", plantilla = plantilla2)
-        val jugador3 = JugadorMus(idJugador = "3", nombreJugador = "Jugador 3", uidUsuario = "uid789", plantilla = plantilla3)
-        val jugador4 = JugadorMus(idJugador = "4", nombreJugador = "Jugador 4", uidUsuario = "uid101", plantilla = plantilla4)
-        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val idPartida = intent.getStringExtra("id_partida")
+        Log.d("ActivityUsuario", "ID de partida recibido: $idPartida")
 
-        partida = PartidaMus(
-            id = UUID.randomUUID().toString(),
-            fecha = System.currentTimeMillis(),
-            puntosJugador1 = 0,
-            puntosJugador2 = 0,
-            puntosJugador3 = 0,
-            puntosJugador4 = 0,
-            puntosEquipo1 = 0,
-            puntosEquipo2 = 0,
-            victoriasEquipo1 = 0,
-            victoriasEquipo2 = 0,
-            equipoGanador = null,
-            nombrePartida = "Partida X",
-            cantidadRondas = 3,
-            jugadores = listOf(jugador1, jugador2, jugador3, jugador4),
-            usuarioId = currentUserId
-        )
+        if (idPartida != null) {
+            musService.obtenerPartidaPorId(
+                idPartida,
+                onSuccess = { partidaObtenida ->
+                partida=partidaObtenida
+                    actualizarVistaPartida()
+
+                },
+                onFailure = {
+                    Toast.makeText(this, "No se encontró la partida con ID: $idPartida", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }else{
+            inicializarPartida()
+            resetearContadores()
+        }
+
+
 
 
         val tvJ1 = findViewById<TextView>(R.id.tv_puntosJuj1)
@@ -103,7 +98,7 @@ class Activity_mus : AppCompatActivity() {
             ajustesDialogFragment.show(supportFragmentManager, "AjustesDialog")
         }
 
-        resetearContadores()
+
 
         btnMas1.setOnClickListener {
             partida.puntosJugador1++
@@ -178,6 +173,40 @@ class Activity_mus : AppCompatActivity() {
 
 
 
+
+
+    }
+
+    private fun inicializarPartida() {
+            val plantilla1 = PlantillaPerfil("plantilla1", "uid123", "Jugador 1", "url1", "fondo1")
+            val plantilla2 = PlantillaPerfil("plantilla2", "uid456", "Jugador 2", "url2", "fondo2")
+            val plantilla3 = PlantillaPerfil("plantilla3", "uid789", "Jugador 3", "url3", "fondo3")
+            val plantilla4 = PlantillaPerfil("plantilla4", "uid101", "Jugador 4", "url4", "fondo4")
+
+            val jugador1 = JugadorMus("1", "Jugador 1", "uid123", plantilla1)
+            val jugador2 = JugadorMus("2", "Jugador 2", "uid456", plantilla2)
+            val jugador3 = JugadorMus("3", "Jugador 3", "uid789", plantilla3)
+            val jugador4 = JugadorMus("4", "Jugador 4", "uid101", plantilla4)
+
+            val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+            partida = PartidaMus(
+                id = UUID.randomUUID().toString(),
+                fecha = System.currentTimeMillis(),
+                puntosJugador1 = 0,
+                puntosJugador2 = 0,
+                puntosJugador3 = 0,
+                puntosJugador4 = 0,
+                puntosEquipo1 = 0,
+                puntosEquipo2 = 0,
+                victoriasEquipo1 = 0,
+                victoriasEquipo2 = 0,
+                equipoGanador = null,
+                nombrePartida = "Partida X",
+                cantidadRondas = 3,
+                jugadores = listOf(jugador1, jugador2, jugador3, jugador4),
+                usuarioId = currentUserId
+            )
 
 
     }
@@ -364,4 +393,33 @@ class Activity_mus : AppCompatActivity() {
             .setNegativeButton("Cancelar", null)
             .show()
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("partida_guardada", partida)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val partidaRecuperada = savedInstanceState.getSerializable("partida_guardada") as? PartidaMus
+        if (partidaRecuperada != null) {
+            partida = partidaRecuperada
+        }
+    }
+    private fun actualizarVistaPartida() {
+        // Actualizar los puntos de los jugadores
+        findViewById<TextView>(R.id.tv_puntosJuj1).text = "${partida.puntosJugador1} T"
+        findViewById<TextView>(R.id.tv_puntosJuj2).text = "${partida.puntosJugador2} H"
+        findViewById<TextView>(R.id.tv_puntosJuj3).text = "${partida.puntosJugador3} T"
+        findViewById<TextView>(R.id.tv_puntosJuj4).text = "${partida.puntosJugador4} H"
+
+        // Actualizar los puntos de los equipos
+        findViewById<TextView>(R.id.contadorPunto1).text = "${partida.puntosEquipo1}"
+        findViewById<TextView>(R.id.contadorPunto2).text = "${partida.puntosEquipo2}"
+
+        // Si es necesario, cargar las plantillas de los jugadores
+        partida.jugadores.forEachIndexed { index, jugador ->
+            jugador.plantilla?.let { actualizarVistaJugador(index + 1, it) }
+        }
+    }
+
 }

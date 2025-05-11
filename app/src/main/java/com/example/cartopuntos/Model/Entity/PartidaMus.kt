@@ -6,7 +6,7 @@ import java.io.Serializable
 
 @Entity(tableName = "partidas")
 data class PartidaMus(
-    @PrimaryKey val id: String = "",
+    @PrimaryKey var id: String = "",
     var fecha: Long = 0L,
     var puntosJugador1: Int = 0,
     var puntosJugador2: Int = 0,

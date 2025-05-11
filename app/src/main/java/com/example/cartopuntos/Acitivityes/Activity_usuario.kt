@@ -2,6 +2,7 @@ package com.example.cartopuntos.Acitivityes
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -35,7 +36,9 @@ class Activity_usuario : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_activity_usuario)
+        Log.d("ActivityUsuario", "onCreate llamado")
+
+        setContentView(R.layout.view_activity_usuario) // ¡Importante! Antes de acceder a las vistas
 
         // Enlazar vistas
         tvNombreUsuario = findViewById(R.id.tv_nombreUsuario)
@@ -53,6 +56,8 @@ class Activity_usuario : AppCompatActivity() {
             tvTotalPlantillas.text = "Total de partidas: ${listaPartidas.size}"
         }
         recyclerView.adapter = partidaAdapter
+
+
 
         val user = auth.currentUser
         if (user != null) {
@@ -72,7 +77,7 @@ class Activity_usuario : AppCompatActivity() {
                     tvNombreUsuario.text = "Error al obtener datos del usuario"
                 }
 
-            // Cargar partidas desde colección "partidasMus"
+            // Cargar partidas del usuario
             musService.obtenerPartidasDelUsuario(
                 onSuccess = { partidas ->
                     listaPartidas.clear()
@@ -86,21 +91,26 @@ class Activity_usuario : AppCompatActivity() {
             )
 
         } else {
-            val intent = Intent(this, IniciarSesionActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            startActivity(
+                Intent(this, IniciarSesionActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+            )
             finish()
         }
 
+        // Botones
         btnPlantillas.setOnClickListener {
             startActivity(Intent(this, ActivityPlantillas::class.java))
         }
 
         btnLogout.setOnClickListener {
             auth.signOut()
-            val intent = Intent(this, IniciarSesionActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            startActivity(
+                Intent(this, IniciarSesionActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+            )
             finish()
         }
 
