@@ -113,4 +113,5 @@
     <string name="partida_1">Partida 1</string>
     <string name="retomar">Retomar</string>
     <string name="borrar">Borrar</string>
+    <string name="da_o_por_comandante">Daño por comandante</string>
 </resources>
