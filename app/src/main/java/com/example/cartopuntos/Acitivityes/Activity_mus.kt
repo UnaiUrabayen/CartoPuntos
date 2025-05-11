@@ -24,6 +24,7 @@ import com.example.cartopuntos.activities.ActivityPlantillas
 import java.util.UUID
 import com.bumptech.glide.request.transition.Transition
 import com.example.cartopuntos.Model.Service.MusService
+import com.google.firebase.auth.FirebaseAuth
 
 
 class Activity_mus : AppCompatActivity() {
@@ -46,6 +47,7 @@ class Activity_mus : AppCompatActivity() {
         val jugador2 = JugadorMus(idJugador = "2", nombreJugador = "Jugador 2", uidUsuario = "uid456", plantilla = plantilla2)
         val jugador3 = JugadorMus(idJugador = "3", nombreJugador = "Jugador 3", uidUsuario = "uid789", plantilla = plantilla3)
         val jugador4 = JugadorMus(idJugador = "4", nombreJugador = "Jugador 4", uidUsuario = "uid101", plantilla = plantilla4)
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
         partida = PartidaMus(
             id = UUID.randomUUID().toString(),
@@ -61,7 +63,8 @@ class Activity_mus : AppCompatActivity() {
             equipoGanador = null,
             nombrePartida = "Partida X",
             cantidadRondas = 3,
-            jugadores = listOf(jugador1, jugador2, jugador3, jugador4)
+            jugadores = listOf(jugador1, jugador2, jugador3, jugador4),
+            usuarioId = currentUserId
         )
 
 

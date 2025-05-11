@@ -5,7 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cartopuntos.Model.Adapter.PartidaAdapter
+import com.example.cartopuntos.Model.Entity.PartidaMus
+import com.example.cartopuntos.Model.Service.MusService
 import com.example.cartopuntos.R
 import com.example.cartopuntos.activities.ActivityPlantillas
 import com.google.firebase.auth.FirebaseAuth
@@ -19,9 +25,13 @@ class Activity_usuario : AppCompatActivity() {
     private lateinit var btnPlantillas: Button
     private lateinit var btnLogout: ImageView
     private lateinit var btnBack: ImageView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var partidaAdapter: PartidaAdapter
+    private val listaPartidas = mutableListOf<PartidaMus>()
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val musService = MusService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,58 +44,68 @@ class Activity_usuario : AppCompatActivity() {
         btnPlantillas = findViewById(R.id.btn_plantillas)
         btnLogout = findViewById(R.id.imb_logout)
         btnBack = findViewById(R.id.imb_atras)
+        recyclerView = findViewById(R.id.rv_partidas)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Verificar si el usuario está autenticado
+        partidaAdapter = PartidaAdapter(listaPartidas) { partidaEliminada ->
+            listaPartidas.remove(partidaEliminada)
+            partidaAdapter.notifyDataSetChanged()
+            tvTotalPlantillas.text = "Total de partidas: ${listaPartidas.size}"
+        }
+        recyclerView.adapter = partidaAdapter
+
         val user = auth.currentUser
         if (user != null) {
-            // Si el usuario está autenticado, obtenemos su información
             val emailUsuario = user.email ?: "user@thx.com"
 
-            // Obtener los detalles del usuario desde Firestore
-            db.collection("usuarios")
-                .document(emailUsuario)
+            // Mostrar datos del usuario
+            db.collection("usuarios").document(emailUsuario)
                 .get()
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
                         val nombreUsuario = document.getString("nombreUsuario") ?: "Usuario"
-                        // Mostrar nombre, email y otros datos
                         tvNombreUsuario.text = "Hola, $nombreUsuario!"
                         tvEmailUsuario.text = "Email: $emailUsuario"
-                        tvTotalPlantillas.text = "Total de plantillas: 0" // Este valor puede ser dinámico dependiendo de tu lógica
                     }
                 }
                 .addOnFailureListener {
-                    // Manejo de error al obtener los datos de Firestore
                     tvNombreUsuario.text = "Error al obtener datos del usuario"
                 }
+
+            // Cargar partidas desde colección "partidasMus"
+            musService.obtenerPartidasDelUsuario(
+                onSuccess = { partidas ->
+                    listaPartidas.clear()
+                    listaPartidas.addAll(partidas)
+                    partidaAdapter.notifyDataSetChanged()
+                    tvTotalPlantillas.text = "Total de partidas: ${listaPartidas.size}"
+                },
+                onFailure = {
+                    Toast.makeText(this, "Error al cargar partidas", Toast.LENGTH_SHORT).show()
+                }
+            )
+
         } else {
-            // Si no hay usuario autenticado, redirigimos al inicio de sesión
             val intent = Intent(this, IniciarSesionActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
 
-        // Ir a la pantalla de plantillas
         btnPlantillas.setOnClickListener {
-            val intent = Intent(this, ActivityPlantillas::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ActivityPlantillas::class.java))
         }
 
-        // Cerrar sesión
         btnLogout.setOnClickListener {
-            auth.signOut() // Cerrar sesión en Firebase
-
-            // Redirigir a la pantalla de inicio de sesión
+            auth.signOut()
             val intent = Intent(this, IniciarSesionActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
 
-        // Volver atrás cerrando la view
         btnBack.setOnClickListener {
-            finish() // Esto cierra la Activity y vuelve a la anterior
+            finish()
         }
     }
 }
