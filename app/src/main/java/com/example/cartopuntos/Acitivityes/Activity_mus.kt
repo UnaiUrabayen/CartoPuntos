@@ -23,6 +23,7 @@ import com.example.cartopuntos.R
 import com.example.cartopuntos.activities.ActivityPlantillas
 import java.util.UUID
 import com.bumptech.glide.request.transition.Transition
+import com.example.cartopuntos.Model.Service.MusService
 
 
 class Activity_mus : AppCompatActivity() {
@@ -84,9 +85,8 @@ class Activity_mus : AppCompatActivity() {
         reloadButton.setOnClickListener {
             val menuDialog = MenuDialogReiniciarMus(
                 onReiniciarClick = { reiniciarPartida() },
-                onDeclararClick = {
-                    mostrarDialogoDeclararGanador()
-                }
+                onDeclararClick = { mostrarDialogoDeclararGanador() },
+                partida = partida
             )
             menuDialog.show(supportFragmentManager, "MenuDialog")
         }
@@ -283,15 +283,24 @@ class Activity_mus : AppCompatActivity() {
         actualizarVista(tvJ1, tvJ2, tvJ3, tvJ4)
     }
 
+    private val musService = MusService()
+
     private fun mostrarMensajeVictoria(equipo: String) {
         AlertDialog.Builder(this)
             .setMessage("$equipo ha ganado el juego. ¿Quieres guardar la partida?")
             .setCancelable(false)
-            .setPositiveButton("Aceptar") { _, _ -> }
+            .setPositiveButton("Aceptar") { _, _ ->
+                musService.guardarPartida(partida,
+                    onSuccess = { Toast.makeText(this, "Partida guardada", Toast.LENGTH_SHORT).show() },
+                    onFailure = { Toast.makeText(this, "Error al guardar partida", Toast.LENGTH_SHORT).show() }
+                )
+            }
             .setNegativeButton("Cancelar", null)
             .show()
+
         reiniciarPartida()
     }
+
 
     private fun reiniciarPartida() {
         partida = PartidaMus(
@@ -313,6 +322,18 @@ class Activity_mus : AppCompatActivity() {
         findViewById<TextView>(R.id.contadorPunto1).text = "0"
         findViewById<TextView>(R.id.contadorPunto2).text = "0"
     }
+    private fun guardarPartidaEnFirebase() {
+        val musService = MusService()
+        musService.guardarPartida(partida,
+            onSuccess = {
+                Toast.makeText(this, "Partida guardada en la nube", Toast.LENGTH_SHORT).show()
+            },
+            onFailure = {
+                Toast.makeText(this, "Error al guardar: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
 
     private fun resetearContadores() {
         partida.puntosJugador1 = 0
