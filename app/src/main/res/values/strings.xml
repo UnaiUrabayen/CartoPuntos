@@ -109,4 +109,8 @@
     <string name="fondo_escogido_por_el_jugador">fondo escogido por el jugador</string>
     <string name="eliminar">Eliminar</string>
     <string name="seleccionar">Seleccionar</string>
+    <string name="guardar_partida">Guardar Partida</string>
+    <string name="partida_1">Partida 1</string>
+    <string name="retomar">Retomar</string>
+    <string name="borrar">Borrar</string>
 </resources>
