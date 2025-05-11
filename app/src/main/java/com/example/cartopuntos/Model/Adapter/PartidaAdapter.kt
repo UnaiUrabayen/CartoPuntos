@@ -11,6 +11,9 @@ import com.example.cartopuntos.Model.Entity.PartidaMus
 import com.example.cartopuntos.Model.Service.MusService
 import com.example.cartopuntos.R
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 class PartidaAdapter(
     private val partidas: MutableList<PartidaMus>, // Lista de partidas
     private val onPartidaBorrada: (PartidaMus) -> Unit // Callback para eliminar una partida
@@ -38,20 +41,27 @@ class PartidaAdapter(
 
     inner class PartidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nombrePartidaTextView: TextView = itemView.findViewById(R.id.tv_tituloPartida)
-        private val btnBorrar: Button = itemView.findViewById(R.id.btn_borrar) // Cambié el nombre del botón
-        private val btnRetomar: Button = itemView.findViewById(R.id.btn_retomar) // Cambié el nombre del botón
+        private val fechaPartidaTextView: TextView = itemView.findViewById(R.id.tv_fecha) // Nueva TextView para la fecha
+        private val btnBorrar: Button = itemView.findViewById(R.id.btn_borrar)
+        private val btnRetomar: Button = itemView.findViewById(R.id.btn_retomar)
+
+        // Formato de la fecha
+        private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
         fun bind(partida: PartidaMus) {
             nombrePartidaTextView.text = partida.nombrePartida
 
-            // Botón para borrar la partida
+            // Convertir timestamp a una fecha legible
+            val fecha = Date(partida.fecha.toLong())  // Convertir el timestamp a un objeto Date
+            val fechaFormateada = dateFormat.format(fecha)  // Formatear la fecha
+
+            fechaPartidaTextView.text = fechaFormateada  // Establecer la fecha formateada en el TextView
+
             btnBorrar.setOnClickListener {
                 borrarPartida(partida)
             }
 
-            // Botón para retomar (por ahora no hace nada)
             btnRetomar.setOnClickListener {
-                // Aquí podemos agregar la lógica para retomar la partida cuando esté lista.
                 Toast.makeText(itemView.context, "Retomar partida aún no implementado", Toast.LENGTH_SHORT).show()
             }
         }

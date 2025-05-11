@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,39 +10,72 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/fondo_mas_bordes_negros"
-        >
+        android:padding="12dp">
 
-        <TextView
-            android:id="@+id/tv_tituloPartida"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/partida_1"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+        <!-- Titulo alineado a la izquierda con fecha a la derecha -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="start|end"
             android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_tituloPartida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/partida_1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_weight="1" /> <!-- Agregar peso para que ocupe el espacio disponible -->
+
+            <!-- Campo de fecha alineado a la derecha -->
+            <TextView
+                android:id="@+id/tv_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12/05/2025"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="16dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
+        </LinearLayout>
+
+        <!-- Botones debajo del texto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
             <Button
                 android:id="@+id/btn_retomar"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="@string/retomar"
+                android:background="@drawable/rounded_corners"
                 android:backgroundTint="@android:color/holo_green_dark"
-                />
+                android:layout_marginEnd="8dp" />
 
             <Button
                 android:id="@+id/btn_borrar"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="@string/borrar"
-                android:backgroundTint="@android:color/holo_red_dark"
-                android:layout_marginStart="8dp" />
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@android:color/holo_red_dark" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
