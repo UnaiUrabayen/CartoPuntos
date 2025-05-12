@@ -159,7 +159,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="40dp"
             android:background="@mipmap/menu" />
     </FrameLayout>
@@ -183,7 +183,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             android:contentDescription="@string/icono_de_usuario_del_jugador_2"
             app:srcCompat="@drawable/account_circle_24px" />
 
