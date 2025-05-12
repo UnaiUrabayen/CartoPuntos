@@ -15,5 +15,6 @@ data class JugadorMagic(
     var tieneIniciativa: Boolean = false,
 
     // Comandante (daño recibido de otros jugadores)
-    val dañoDeComandantes: MutableMap<Int, Int> = mutableMapOf()// clave: ID del comandante enemigo
+    val dañoDeComandantes: MutableMap<Int, Int> = mutableMapOf(),// clave: ID del comandante enemigo
+    var plantilla: PlantillaPerfil? = null
 )

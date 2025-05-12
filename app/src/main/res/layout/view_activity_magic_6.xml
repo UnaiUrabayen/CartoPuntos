@@ -322,7 +322,7 @@
 
             <TextView
                 android:id="@+id/tv_jugador3"
-                android:layout_width="wrap_content"
+                android:layout_width="106dp"
                 android:layout_height="wrap_content"
                 android:rotation="90"
                 android:text="@string/jugador3"
@@ -498,8 +498,8 @@
 
             <TextView
                 android:id="@+id/tv_jugador5"
-                android:layout_width="76dp"
-                android:layout_height="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
                 android:rotation="90"
                 android:text="@string/jugador_5"
                 android:textSize="18sp"
@@ -517,7 +517,7 @@
             android:rotation="90" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/icon_plantilla_jug5"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|end"
@@ -608,7 +608,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/icon_plantilla_jug6"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|start"

@@ -284,7 +284,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"
-            android:layout_margin="8dp"
+            android:layout_margin="16dp"
             android:contentDescription="@string/icono_de_usaurio_jugador_3"
             app:srcCompat="@drawable/account_circle_24px" />
 

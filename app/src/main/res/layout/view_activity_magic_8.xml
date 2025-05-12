@@ -340,7 +340,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/icon_plantilla_jug7"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="top|end"
@@ -427,7 +427,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/icon_plantilla_jug8"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="top|start"
@@ -693,7 +693,7 @@
             android:rotation="90" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/icon_plantilla_jug5"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|end"
@@ -784,7 +784,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/icon_plantilla_jug6"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="bottom|start"
