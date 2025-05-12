@@ -78,7 +78,7 @@
     <FrameLayout
         android:id="@+id/frameLayout1"
         android:layout_width="match_parent"
-        android:layout_height="338dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
         android:background="@drawable/borde_blanco"
         android:rotation="180"
@@ -179,7 +179,7 @@
         app:layout_constraintTop_toBottomOf="@+id/vie1">
 
         <ImageView
-            android:id="@+id/imageView2b"
+            android:id="@+id/icon_plantilla_jug2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="top|start"

@@ -1,16 +1,22 @@
 package com.example.cartopuntos.Acitivityes
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
 import com.example.cartopuntos.Dialogs.DialogoComandanteDamage
 import com.example.cartopuntos.Dialogs.MenuDialogDados
 import com.example.cartopuntos.Logica.JuegoMagic
+import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
+import com.bumptech.glide.request.transition.Transition
 import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
 import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
+import com.example.cartopuntos.activities.ActivityPlantillas
 
 class Activity_magic : AppCompatActivity() {
 
@@ -39,6 +45,13 @@ class Activity_magic : AppCompatActivity() {
         for (jugador in 1..cantidad) {
             configurarControlesJugador(jugador)
             configurarMenuJugador(jugador, cantidad)
+
+            // Usar la variable `jugador` para obtener el identificador del icono
+            val iconId = resources.getIdentifier("icon_plantilla_jug$jugador", "id", packageName)
+            val icono = findViewById<ImageView>(iconId)
+
+            // Asegurarse de que el icono no sea null antes de configurar el click
+            icono?.setOnClickListener { openPlantillasAdapter(jugador) }
         }
 
         findViewById<ImageView>(R.id.imageView_usuario1).setOnClickListener {
@@ -78,6 +91,60 @@ class Activity_magic : AppCompatActivity() {
             dialog.show(supportFragmentManager, "MenuDadosDialog")
         }
     }
+    private var jugadorSeleccionado = 0
+
+    private fun openPlantillasAdapter(jugadorId: Int) {
+        jugadorSeleccionado = jugadorId
+        val intent = Intent(this, ActivityPlantillas::class.java)
+        intent.putExtra("ORIGEN", "juego")
+        startActivityForResult(intent, 100)  // Códigos tipo 100 son arbitrarios
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Comprobar si el código de la solicitud es el que esperamos (100 en este caso)
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            // Verificar si el dato que queremos es un objeto de tipo PlantillaPerfil
+            val plantilla = data?.getSerializableExtra("PLANTILLA") as? PlantillaPerfil
+            plantilla?.let {
+                // Actualizar la plantilla del jugador seleccionado
+                juego.jugadores[jugadorSeleccionado - 1]?.plantilla = it
+
+                // Actualizar la vista del jugador con la plantilla recibida
+                actualizarVistaJugador(jugadorSeleccionado, it)
+            }
+        }
+    }
+
+    private fun actualizarVistaJugador(numero: Int, plantilla: PlantillaPerfil) {
+        // Cargar imagen de fondo en cuadranteX
+        val idFondo = resources.getIdentifier("cuadrante$numero", "id", packageName)
+        val cuadrante = findViewById<LinearLayout>(idFondo)
+
+        // Establecer el fondo del LinearLayout
+        Glide.with(this)
+            .load(plantilla.urlFondo)
+            .into(object : SimpleTarget<Drawable>() {
+                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                    cuadrante.background = resource
+                }
+            })
+
+        // Cargar ícono de jugador en icon_plantilla_jugX
+        val idIcon = resources.getIdentifier("icon_plantilla_jug$numero", "id", packageName)
+        val icono = findViewById<ImageView>(idIcon)
+        Glide.with(this)
+            .load(plantilla.fotoPerfilUrl)
+            .circleCrop() // Esto hace que el ícono sea redondo
+            .into(icono)
+
+        // Setear nombre del jugador en tv_jugadorX
+        val idTV = resources.getIdentifier("tv_jugador$numero", "id", packageName)
+        val tvJugador = findViewById<TextView>(idTV)
+        tvJugador.text = plantilla.nombreJugador
+    }
+
+
 
     private fun configurarControlesJugador(jugador: Int) {
         val idMas = resources.getIdentifier("btn_mas$jugador", "id", packageName)
@@ -137,7 +204,7 @@ class Activity_magic : AppCompatActivity() {
 
     private fun reiniciarUI() {
         juego.reiniciar()
-        for ((jugador, _) in juego.getJugadores()) {
+        for ((jugador, _) in juego.getJugadoresConVidas()) {
             val tv = findViewById<TextView>(
                 resources.getIdentifier("tv_puntosJuj$jugador", "id", packageName)
             )
@@ -166,6 +233,6 @@ class Activity_magic : AppCompatActivity() {
     }
 
     private fun detectarGanador(): Int {
-        return juego.getJugadores().maxByOrNull { juego.getVida(it.key) ?: 0 }?.key ?: -1
+        return juego.getJugadoresConVidas().maxByOrNull { juego.getVida(it.key) ?: 0 }?.key ?: -1
     }
 }

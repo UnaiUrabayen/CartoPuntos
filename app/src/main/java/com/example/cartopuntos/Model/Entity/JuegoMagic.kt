@@ -11,7 +11,7 @@ class JuegoMagic(
     val onGanadorDetectado: ((Int) -> Unit)? = null
 ) {
     // Aquí almacenamos los jugadores y sus datos
-    private val jugadores = mutableMapOf<Int, JugadorMagic>()
+    val jugadores = mutableMapOf<Int, JugadorMagic>()
 
     init {
         // Crear los jugadores
@@ -80,6 +80,7 @@ class JuegoMagic(
         return (1..caras).random()
     }
 
-    // Obtener los jugadores con sus vidas actuales
-    fun getJugadores(): Map<Int, Int> = jugadores.mapValues { it.value.vida }
+    // Obtener los jugadores con sus vidas actuales (modificado para no generar conflicto)
+    fun getJugadoresConVidas(): Map<Int, Int> = jugadores.mapValues { it.value.vida }
+
 }
