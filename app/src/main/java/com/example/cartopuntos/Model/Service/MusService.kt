@@ -10,7 +10,6 @@ class MusService {
     private val db = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
-    // Guardar partida
     fun guardarPartida(partida: PartidaMus, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val currentUser = auth.currentUser
         if (currentUser == null) {
@@ -18,12 +17,13 @@ class MusService {
             return
         }
 
-        val partidasRef = db.collection("partidasMus")
-
-        partidasRef.document(partida.id)
+        db.collection("usuarios")
+            .document(currentUser.uid)
+            .collection("partidasMus")
+            .document(partida.id)
             .set(partida)
             .addOnSuccessListener {
-                Log.d("MusService", "Partida guardada con éxito")
+                Log.d("MusService", "Partida guardada con éxito en subcolección")
                 onSuccess()
             }
             .addOnFailureListener {
@@ -32,7 +32,6 @@ class MusService {
             }
     }
 
-    // Eliminar partida
     fun eliminarPartida(partida: PartidaMus, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val currentUser = auth.currentUser
         if (currentUser == null) {
@@ -40,9 +39,10 @@ class MusService {
             return
         }
 
-        val partidasRef = db.collection("partidasMus")
-
-        partidasRef.document(partida.id)
+        db.collection("usuarios")
+            .document(currentUser.uid)
+            .collection("partidasMus")
+            .document(partida.id)
             .delete()
             .addOnSuccessListener {
                 Log.d("MusService", "Partida eliminada con éxito")
@@ -53,7 +53,7 @@ class MusService {
                 onFailure(it)
             }
     }
-    // Obtener partidas del usuario actual
+
     fun obtenerPartidasDelUsuario(onSuccess: (List<PartidaMus>) -> Unit, onFailure: (Exception) -> Unit) {
         val currentUser = auth.currentUser
         if (currentUser == null) {
@@ -61,29 +61,17 @@ class MusService {
             return
         }
 
-        val partidasRef = db.collection("partidasMus")
-            .whereEqualTo("usuarioId", currentUser.uid)  // Filtro para el usuario actual
-
-        partidasRef.get()
+        db.collection("usuarios")
+            .document(currentUser.uid)
+            .collection("partidasMus")
+            .get()
             .addOnSuccessListener { querySnapshot ->
                 val partidas = mutableListOf<PartidaMus>()
                 for (document in querySnapshot.documents) {
                     val partida = document.toObject(PartidaMus::class.java)
-
-                    // Verificación de los campos de la partida y el ID
-                    if (partida != null) {
-                        Log.d("MusService", "Partida obtenida: ${partida.nombrePartida}, ID: ${partida.id}")
-                        if (partida.id.isNotEmpty()) {
-                            partidas.add(partida)
-                        } else {
-                            Log.e("MusService", "Partida con ID vacío encontrada, no se añadirá.")
-                        }
-                    } else {
-                        Log.e("MusService", "No se pudo convertir el documento a PartidaMus. Documento: $document")
+                    if (partida != null && partida.id.isNotEmpty()) {
+                        partidas.add(partida)
                     }
-                }
-                if (partidas.isEmpty()) {
-                    Log.d("MusService", "No se encontraron partidas para el usuario.")
                 }
                 onSuccess(partidas)
             }
@@ -91,23 +79,28 @@ class MusService {
                 onFailure(exception)
             }
     }
+
     fun obtenerPartidaPorId(
         id: String,
         onSuccess: (PartidaMus) -> Unit,
         onFailure: () -> Unit
     ) {
-        FirebaseFirestore.getInstance().collection("partidasMus")
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            onFailure()
+            return
+        }
+
+        db.collection("usuarios")
+            .document(currentUser.uid)
+            .collection("partidasMus")
             .document(id)
             .get()
             .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val partida = document.toObject(PartidaMus::class.java)
-                    if (partida != null) {
-                        partida.id = document.id
-                        onSuccess(partida)
-                    } else {
-                        onFailure()
-                    }
+                val partida = document.toObject(PartidaMus::class.java)
+                if (partida != null) {
+                    partida.id = document.id
+                    onSuccess(partida)
                 } else {
                     onFailure()
                 }
@@ -116,8 +109,4 @@ class MusService {
                 onFailure()
             }
     }
-
-
-
-
 }

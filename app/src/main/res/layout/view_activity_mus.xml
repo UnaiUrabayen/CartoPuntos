@@ -132,8 +132,8 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginBottom="16dp"
-                    android:rotation="90"
                     android:background="@color/cp_light_button_team2"
+                    android:rotation="90"
                     android:text="@string/menos"
                     android:textSize="32sp" />
 
@@ -141,9 +141,10 @@
                     android:id="@+id/tv_puntosJuj1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:gravity="center"
-                    android:text="@string/puntosJug1"
                     android:rotation="90"
+                    android:text="@string/puntosJug1"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -153,15 +154,15 @@
                     android:layout_height="72dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/cp_light_button_team2"
-                    android:text="@string/mas"
-
                     android:rotation="90"
+
+                    android:text="@string/mas"
                     android:textSize="32sp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_jugador1"
-                android:layout_width="94dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fondo_negro_transparente"
                 android:rotation="90"
@@ -235,6 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:text="@string/puntosJug2"
                     android:rotation="270"
                     android:textSize="22sp"
@@ -303,6 +305,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/puntosJug3"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:rotation="90"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -320,7 +323,7 @@
 
             <TextView
                 android:id="@+id/tv_jugador3"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fondo_negro_transparente"
                 android:rotation="90"
@@ -359,7 +362,7 @@
 
             <TextView
                 android:id="@+id/tv_jugador4"
-                android:layout_width="97dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fondo_negro_transparente"
                 android:rotation="270"
@@ -389,6 +392,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/puntosJug4"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:rotation="270"
                     android:textSize="22sp"
                     android:textStyle="bold" />
