@@ -33,7 +33,7 @@ class DialogoComandanteDamage(
             val etDamage = subView.findViewById<EditText>(R.id.etDamage)
 
             tvNombre.text = "Comandante $i"
-            etDamage.setText(juego.obtenerDañoDeComandante(jugadorId, i).toString())
+        //    etDamage.setText(juego.obtenerDañoDeComandante(jugadorId, i).toString())
 
             contenedor.addView(subView)
         }
@@ -47,7 +47,7 @@ class DialogoComandanteDamage(
                     val comandanteId = nombreText.split(" ").last().toInt()
                     val etDamage = item.findViewById<EditText>(R.id.etDamage)
                     val nuevoValor = etDamage.text.toString().toIntOrNull() ?: 0
-                    juego.infligirDañoPorComandante(jugadorId, comandanteId, nuevoValor - juego.obtenerDañoDeComandante(jugadorId, comandanteId))
+                  // juego.infligirDañoPorComandante(jugadorId, comandanteId, nuevoValor - juego.obtenerDañoDeComandante(jugadorId, comandanteId))
                 }
                 Toast.makeText(requireContext(), "Daño actualizado", Toast.LENGTH_SHORT).show()
             }

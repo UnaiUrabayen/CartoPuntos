@@ -34,7 +34,7 @@ class Activity_mus : AppCompatActivity() {
     private lateinit var menuBTN: ImageView
     private  var partidaAdapter: PartidaAdapter? = null
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_activity_mus)

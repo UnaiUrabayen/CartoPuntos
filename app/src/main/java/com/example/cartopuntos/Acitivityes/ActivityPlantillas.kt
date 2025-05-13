@@ -88,6 +88,7 @@ class ActivityPlantillas : AppCompatActivity() {
             Toast.makeText(this, "Debe iniciar sesión para ver las plantillas", Toast.LENGTH_SHORT).show()
         }
     }
+
     fun devolverPlantillaSeleccionada(plantilla: PlantillaPerfil) {
         val intent = Intent()
         intent.putExtra("PLANTILLA", plantilla)

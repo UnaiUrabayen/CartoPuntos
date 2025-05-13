@@ -8,6 +8,22 @@
     tools:context=".Acitivityes.Activity_usuario">
 
     <!-- Titulo -->
+
+    <Button
+        android:id="@+id/btn_cambiarJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/cp_light_button"
+        android:text="Ver Magic"
+        app:layout_constraintBottom_toTopOf="@+id/rv_partidas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_totalPartidas" />
+
     <TextView
         android:id="@+id/tv_nombreUsuario"
         android:layout_width="248dp"
@@ -44,6 +60,7 @@
         android:text="@string/plantillas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/tv_totalPartidas"
@@ -97,17 +114,18 @@
         android:id="@+id/view_us"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="3dp"
         android:background="@color/cp_light_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imb_atras" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_cambiarJuego" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_partidas"
         android:layout_width="396dp"
         android:layout_height="424dp"
+        android:layout_marginTop="2dp"
         android:clipToPadding="false"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,7 +1,8 @@
-package com.example.cartopuntos.Model.Entity
+import com.example.cartopuntos.Model.Entity.PlantillaPerfil
+import java.io.Serializable
 
 data class JugadorMagic(
-    val id: Int,                // ID del jugador.
+    val id: String,                // ID del jugador.
     val nombre: String,         // Nombre del jugador.
     var vida: Int,              // Vida actual.
     val vidaInicial: Int = 40,  // Vida inicial (puede cambiarse si se juega con diferentes reglas).
@@ -15,6 +16,6 @@ data class JugadorMagic(
     var tieneIniciativa: Boolean = false,
 
     // Comandante (daño recibido de otros jugadores)
-    val dañoDeComandantes: MutableMap<Int, Int> = mutableMapOf(),// clave: ID del comandante enemigo
+  //  val dañoDeComandantes: MutableMap<String, String> = mutableMapOf(),// clave: ID del comandante enemigo
     var plantilla: PlantillaPerfil? = null
-)
+) : Serializable // Implementa Serializable

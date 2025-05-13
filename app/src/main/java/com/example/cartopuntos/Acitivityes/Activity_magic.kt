@@ -1,31 +1,61 @@
 package com.example.cartopuntos.Acitivityes
 
+import MenuDialogReiniciarMagic
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.example.cartopuntos.Dialogs.DialogoComandanteDamage
 import com.example.cartopuntos.Dialogs.MenuDialogDados
-import com.example.cartopuntos.Logica.JuegoMagic
+
 import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
 import com.bumptech.glide.request.transition.Transition
+import com.example.cartopuntos.Logica.JuegoMagic
+import com.example.cartopuntos.Model.Adapter.PartidaAdapter
+import com.example.cartopuntos.Model.Service.MagicService
+
 import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
-import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 import com.example.cartopuntos.activities.ActivityPlantillas
 
 class Activity_magic : AppCompatActivity() {
 
-    private lateinit var juego: JuegoMagic
     private var sonido = false
+    private var juegoMagicAdapter: PartidaAdapter? = null
+    private lateinit var juego: JuegoMagic  // Agregar la propiedad de la juego
+    private val magicService = MagicService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val idPartida = intent.getStringExtra("id_partida")
+        Log.d("ActivityUsuario", "ID de juego recibido: $idPartida")
+
+        if (idPartida != null) {
+            // Intentamos obtener la juego por ID
+            magicService.obtenerPartidaPorId(
+                idPartida,
+                onSuccess = { juegoObtenida ->
+                    juego = juegoObtenida  // Se convierte la juego obtenida en la actual
+                    actualizarVistaPartida()  // Actualiza la vista con los datos de la juego
+                },
+                onFailure = {
+                    Toast.makeText(this, "No se encontró la juego con ID: $idPartida", Toast.LENGTH_SHORT).show()
+                    crearNuevaPartida()  // Si no se encuentra la juego, crear una nueva
+                }
+            )
+        } else {
+            // Si no hay ID, se crea una nueva juego
+            crearNuevaPartida()
+        }
+    }
+
+    private fun crearNuevaPartida() {
         val cantidad = intent.getIntExtra("jugadores", 4)
         sonido = intent.getBooleanExtra("sonido", false)
         val permitirNegativos = intent.getBooleanExtra("vidaNegativa", false)
@@ -34,26 +64,43 @@ class Activity_magic : AppCompatActivity() {
         val layoutId = obtenerLayoutPorJugadores(cantidad)
         setContentView(layoutId)
 
+        // Crear la nueva juego
         juego = JuegoMagic(
             cantidadJugadores = cantidad,
             permitirVidaNegativa = permitirNegativos,
-            autoReinicioActivo = autoReset,
-            onJugadorMuere = { jugador -> onJugadorMuerto(jugador) },
-            onGanadorDetectado = { ganador -> onGanador(ganador) }
+            autoReinicioActivo = autoReset
         )
 
+        // Asignar las lambdas después de la creación del objeto
+        juego.onJugadorMuere = { jugador -> onJugadorMuerto(jugador) }
+        juego.onGanadorDetectado = { ganador -> onGanador(ganador) }
+
+        // Configurar los controles de los jugadores
         for (jugador in 1..cantidad) {
             configurarControlesJugador(jugador)
             configurarMenuJugador(jugador, cantidad)
-
-            // Usar la variable `jugador` para obtener el identificador del icono
             val iconId = resources.getIdentifier("icon_plantilla_jug$jugador", "id", packageName)
             val icono = findViewById<ImageView>(iconId)
-
-            // Asegurarse de que el icono no sea null antes de configurar el click
             icono?.setOnClickListener { openPlantillasAdapter(jugador) }
         }
 
+        // Configuración de otros controles UI como reiniciar y lanzar dados
+        configurarControlesUI()
+    }
+
+    private fun actualizarVistaPartida() {
+        // Aquí actualizas la UI de acuerdo con la juego cargada
+        for (jugador in 1..juego.cantidadJugadores) {
+            configurarControlesJugador(jugador)
+            configurarMenuJugador(jugador, juego.cantidadJugadores)
+            val iconId = resources.getIdentifier("icon_plantilla_jug$jugador", "id", packageName)
+            val icono = findViewById<ImageView>(iconId)
+            icono?.setOnClickListener { openPlantillasAdapter(jugador) }
+        }
+        // Aquí también puedes cargar otros datos de la juego, como las vidas, los jugadores, etc.
+    }
+
+    private fun configurarControlesUI() {
         findViewById<ImageView>(R.id.imageView_usuario1).setOnClickListener {
             val dialog = ConfiguracionMagicDialog { newCantidad, sonidoNuevo, vidaNeg, autoResetNuevo ->
                 val intent = Intent(this, Activity_magic::class.java).apply {
@@ -69,16 +116,12 @@ class Activity_magic : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.reloadBTN).setOnClickListener {
-            val nombresJugadores = (1..cantidad).map { "Jugador $it" }
+            val nombresJugadores = (1..juego.cantidadJugadores).map { "Jugador $it" }
 
             val dialog = MenuDialogReiniciarMagic(
                 jugadores = nombresJugadores,
-                onReiniciarClick = {
-                    reiniciarUI()
-                },
-                onDeclararClick = { ganador ->
-                    Toast.makeText(this, "El ganador es: $ganador", Toast.LENGTH_SHORT).show()
-                }
+                partida = juego,
+                onReiniciarClick = { reiniciarUI() }
             )
             dialog.show(supportFragmentManager, "ReiniciarDialog")
         }
@@ -91,6 +134,10 @@ class Activity_magic : AppCompatActivity() {
             dialog.show(supportFragmentManager, "MenuDadosDialog")
         }
     }
+
+
+
+
     private var jugadorSeleccionado = 0
 
     private fun openPlantillasAdapter(jugadorId: Int) {
