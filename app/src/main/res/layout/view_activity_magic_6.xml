@@ -125,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:rotation="90"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:text="@string/puntosJug1"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -146,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:rotation="90"
                 android:text="@string/jugador__1"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -212,6 +214,7 @@
                 android:layout_height="wrap_content"
                 android:rotation="270"
                 android:text="@string/jugador_2"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -238,6 +241,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:rotation="270"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:text="@string/puntosJug2"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -307,6 +311,7 @@
                     android:rotation="90"
                     android:text="@string/puntosJug3"
                     android:textSize="22sp"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:textStyle="bold" />
 
                 <Button
@@ -327,6 +332,7 @@
                 android:rotation="90"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -387,6 +393,7 @@
                 android:rotation="270"
                 android:text="@string/jugador_4"
                 android:textSize="18sp"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -414,6 +421,7 @@
                     android:rotation="270"
                     android:text="@string/puntosJug4"
                     android:textSize="22sp"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:textStyle="bold" />
 
                 <!-- INVERTIDO: MENOS ABAJO -->
@@ -483,6 +491,7 @@
                     android:rotation="90"
                     android:text="@string/puntosJug5"
                     android:textSize="22sp"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:textStyle="bold" />
 
                 <Button
@@ -503,6 +512,7 @@
                 android:rotation="90"
                 android:text="@string/jugador_5"
                 android:textSize="18sp"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -565,6 +575,7 @@
                 android:rotation="270"
                 android:text="@string/jugador_6"
                 android:textSize="18sp"
+                android:background="@drawable/fondo_negro_transparente"
                 android:textStyle="bold" />
 
             <LinearLayout

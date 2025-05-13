@@ -124,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:rotation="90"
                     android:text="@string/puntosJug1"
                     android:textSize="22sp"
@@ -143,6 +144,7 @@
             <TextView
                 android:id="@+id/tv_jugador1"
                 android:layout_width="99dp"
+                android:background="@drawable/fondo_negro_transparente"
                 android:layout_height="wrap_content"
                 android:rotation="90"
                 android:text="@string/jugador__1"
@@ -213,6 +215,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:rotation="270"
+                android:background="@drawable/fondo_negro_transparente"
                 android:text="@string/jugador_2"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -240,6 +243,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:rotation="270"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:text="@string/puntosJug2"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -305,6 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="@drawable/fondo_negro_transparente"
                 android:text="@string/jugador3"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -332,6 +337,7 @@
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
                     android:text="@string/puntosJug3"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
