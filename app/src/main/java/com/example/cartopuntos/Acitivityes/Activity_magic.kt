@@ -1,5 +1,6 @@
 package com.example.cartopuntos.Acitivityes
 
+import MenuDialogReiniciarMagic
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
@@ -10,17 +11,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.example.cartopuntos.Dialogs.DialogoComandanteDamage
 import com.example.cartopuntos.Dialogs.MenuDialogDados
-import com.example.cartopuntos.Logica.JuegoMagic
+
 import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
 import com.bumptech.glide.request.transition.Transition
+import com.example.cartopuntos.Logica.JuegoMagic
 import com.example.cartopuntos.Utils.ConfiguracionMagicDialog
-import com.example.cartopuntos.Utils.MenuDialogReiniciarMagic
 import com.example.cartopuntos.activities.ActivityPlantillas
 
 class Activity_magic : AppCompatActivity() {
 
-    private lateinit var juego: JuegoMagic
+    private lateinit var juego: JuegoMagic  // Esta es la variable de la clase, que debe inicializarse más tarde
     private var sonido = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +35,16 @@ class Activity_magic : AppCompatActivity() {
         val layoutId = obtenerLayoutPorJugadores(cantidad)
         setContentView(layoutId)
 
-        juego = JuegoMagic(
+        // Eliminar la declaración local de 'juego', ya que 'juego' es una propiedad de la clase
+        juego = JuegoMagic(  // Aquí inicializamos la variable de la clase 'juego'
             cantidadJugadores = cantidad,
             permitirVidaNegativa = permitirNegativos,
-            autoReinicioActivo = autoReset,
-            onJugadorMuere = { jugador -> onJugadorMuerto(jugador) },
-            onGanadorDetectado = { ganador -> onGanador(ganador) }
+            autoReinicioActivo = autoReset
         )
+
+        // Asignar las lambdas después de la creación del objeto
+        juego.onJugadorMuere = { jugador -> onJugadorMuerto(jugador) }
+        juego.onGanadorDetectado = { ganador -> onGanador(ganador) }
 
         for (jugador in 1..cantidad) {
             configurarControlesJugador(jugador)
@@ -73,11 +77,9 @@ class Activity_magic : AppCompatActivity() {
 
             val dialog = MenuDialogReiniciarMagic(
                 jugadores = nombresJugadores,
+                partida = juego, // <-- tu instancia actual de JuegoMagic
                 onReiniciarClick = {
                     reiniciarUI()
-                },
-                onDeclararClick = { ganador ->
-                    Toast.makeText(this, "El ganador es: $ganador", Toast.LENGTH_SHORT).show()
                 }
             )
             dialog.show(supportFragmentManager, "ReiniciarDialog")
@@ -91,6 +93,7 @@ class Activity_magic : AppCompatActivity() {
             dialog.show(supportFragmentManager, "MenuDadosDialog")
         }
     }
+
     private var jugadorSeleccionado = 0
 
     private fun openPlantillasAdapter(jugadorId: Int) {

@@ -1,19 +1,22 @@
-package com.example.cartopuntos.Utils
-
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.example.cartopuntos.Logica.JuegoMagic
+import com.example.cartopuntos.Model.Service.MagicService
 import com.example.cartopuntos.R
 
 class MenuDialogReiniciarMagic(
     private val jugadores: List<String>,
-    private val onReiniciarClick: () -> Unit,
-    private val onDeclararClick: (ganador: Int) -> Unit
+    private val partida: JuegoMagic,
+    private val onReiniciarClick: () -> Unit
 ) : DialogFragment() {
+
+    private val service = MagicService()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.menu_reiniciar_mus, null)
@@ -30,7 +33,7 @@ class MenuDialogReiniciarMagic(
         }
 
         btnDeclarar.setOnClickListener {
-            mostrarDialogoSeleccionGanador()
+            mostrarDialogoGuardarPartida()
         }
 
         return AlertDialog.Builder(requireContext())
@@ -38,37 +41,34 @@ class MenuDialogReiniciarMagic(
             .create()
     }
 
-    private fun mostrarDialogoSeleccionGanador() {
-        var jugadorSeleccionado = -1
+    private fun mostrarDialogoGuardarPartida() {
+        val input = EditText(requireContext())
+        input.hint = "Nombre de la partida"
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Selecciona el ganador")
-            .setSingleChoiceItems(jugadores.toTypedArray(), -1) { _, which ->
-                jugadorSeleccionado = which
-            }
-            .setPositiveButton("Aceptar") { _, _ ->
-                if (jugadorSeleccionado != -1) {
-                    mostrarDialogoGuardar(jugadorSeleccionado + 1)
-                    dismiss()
+            .setTitle("Guardar partida")
+            .setMessage("Introduce un nombre para la partida:")
+            .setView(input)
+            .setPositiveButton("Guardar") { _, _ ->
+                val nombre = input.text.toString().trim()
+                if (nombre.isNotEmpty()) {
+                    partida.nombrePartida = nombre
+                    partida.fecha = System.currentTimeMillis().toString()
+
+                    service.guardarPartida(partida,
+                        onSuccess = {
+                            Toast.makeText(requireContext(), "Partida guardada con éxito", Toast.LENGTH_SHORT).show()
+                            dismiss()
+                        },
+                        onFailure = {
+                            Toast.makeText(requireContext(), "Error al guardar la partida", Toast.LENGTH_SHORT).show()
+                        }
+                    )
                 } else {
-                    Toast.makeText(requireContext(), "No se seleccionó ningún jugador", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton("Cancelar", null)
-            .show()
-    }
-
-    private fun mostrarDialogoGuardar(jugadorGanador: Int) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Jugador $jugadorGanador ha ganado")
-            .setMessage("¿Deseas guardar la partida?")
-            .setPositiveButton("Sí") { _, _ ->
-                Toast.makeText(requireContext(), "Guardando partida...", Toast.LENGTH_SHORT).show()
-                onDeclararClick(jugadorGanador)
-            }
-            .setNegativeButton("No") { _, _ ->
-                Toast.makeText(requireContext(), "Partida no guardada", Toast.LENGTH_SHORT).show()
-            }
             .show()
     }
 }

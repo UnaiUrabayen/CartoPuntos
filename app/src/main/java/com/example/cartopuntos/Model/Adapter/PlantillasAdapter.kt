@@ -1,7 +1,6 @@
 package com.example.cartopuntos.model.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.cartopuntos.Acitivityes.Activity_mus
 import com.example.cartopuntos.Model.Entity.PlantillaPerfil
 import com.example.cartopuntos.R
 import com.google.firebase.firestore.FirebaseFirestore
