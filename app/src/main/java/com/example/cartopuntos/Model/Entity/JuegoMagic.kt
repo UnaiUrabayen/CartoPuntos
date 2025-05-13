@@ -31,7 +31,6 @@ class JuegoMagic(
         val jugador = jugadores[jugadorId] ?: return false
         val vidaActual = jugador.vida
         val nuevaVida = vidaActual + delta
-
         if (nuevaVida < 0 && !permitirVidaNegativa) return false
 
         jugador.vida = nuevaVida

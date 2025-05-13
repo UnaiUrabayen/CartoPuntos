@@ -13,7 +13,6 @@ import com.example.cartopuntos.Acitivityes.Activity_magic
 import com.example.cartopuntos.Logica.JuegoMagic
 import com.example.cartopuntos.Model.Service.MagicService
 import com.example.cartopuntos.R
-import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -21,8 +20,6 @@ class PartidaMagicAdapter(
     private val partidas: MutableList<JuegoMagic>,
     private val onPartidaBorrada: (JuegoMagic) -> Unit
 ) : RecyclerView.Adapter<PartidaMagicAdapter.PartidaMagicViewHolder>() {
-
-    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartidaMagicViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -67,39 +64,14 @@ class PartidaMagicAdapter(
                 val context = itemView.context
                 val idPartida = partida.id
 
-                if (idPartida != null) {
-                    db.collection("usuarios")
-                        .document(partida.id)
-                        .collection("juegosMagic")
-                        .document(idPartida)
-                        .get()
-                        .addOnSuccessListener { document ->
-                            if (document.exists()) {
-                                val partidaMagic = document.toObject(JuegoMagic::class.java)
-                                if (partidaMagic != null) {
-                                    Log.d("PartidaMagicAdapter", "Partida obtenida: ${partidaMagic.nombrePartida}")
-                                }
-                            } else {
-                                Log.e("PartidaMagicAdapter", "No se encontró la partida con ID: $idPartida")
-                            }
-                        }
-                        .addOnFailureListener {
-                            Log.e("PartidaMagicAdapter", "Error al obtener la partida")
-                        }
-
+                if (!idPartida.isNullOrEmpty()) {
                     val intent = Intent(context, Activity_magic::class.java)
                     intent.putExtra("id_partida", idPartida)
-
-                    if (idPartida.isNotEmpty()) {
-                        context.startActivity(intent)
-                        Log.d("PartidaMagicAdapter", "Intent enviado a Activity_magic con ID: $idPartida")
-                    } else {
-                        Log.e("PartidaMagicAdapter", "ID vacío")
-                        Toast.makeText(context, "Error: ID de partida vacío", Toast.LENGTH_SHORT).show()
-                    }
+                    context.startActivity(intent)
+                    Log.d("PartidaMagicAdapter", "Intent enviado a Activity_magic con ID: $idPartida")
                 } else {
-                    Log.e("PartidaMagicAdapter", "ID null")
-                    Toast.makeText(context, "Error: ID de partida es null", Toast.LENGTH_SHORT).show()
+                    Log.e("PartidaMagicAdapter", "ID de partida es null o vacío")
+                    Toast.makeText(context, "Error: ID de partida inválido", Toast.LENGTH_SHORT).show()
                 }
             }
         }
