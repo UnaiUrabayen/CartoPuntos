@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -213,14 +214,57 @@ class Activity_magic : AppCompatActivity() {
         btnMenos.setOnClickListener {
             if (juego.modificarVida(jugador, -1)) {
                 val nuevaVida = juego.getVida(jugador)!!
-                tvPuntos.text = if (nuevaVida <= 0) "MUERTO" else nuevaVida.toString()
+                tvPuntos.text = if (nuevaVida <= 0) "\uD83D\uDC80" else nuevaVida.toString()
                 if (nuevaVida <= 0) {
                     btnMas.isEnabled = false
                     btnMenos.isEnabled = false
+
+                    // Revisar cuántos jugadores están vivos
+                    val vivos = juego.getJugadoresConVidas().filter { it.value > 0 }
+                    if (vivos.size == 1) {
+                        val ganador = vivos.keys.first()
+                        mostrarDialogoGuardarPartida()
+                    }
                 }
             }
         }
     }
+
+    private fun mostrarDialogoGuardarPartida() {
+        val input = EditText(this)
+        input.hint = "Nombre de la partida"
+
+        AlertDialog.Builder(this)
+            .setTitle("Guardar partida")
+            .setMessage("Introduce un nombre para la partida:")
+            .setView(input)
+            .setPositiveButton("Guardar") { dialog, _ ->
+                val nombre = input.text.toString().trim()
+                if (nombre.isNotEmpty()) {
+                    juego.nombrePartida = nombre
+                    juego.fecha = System.currentTimeMillis().toString()
+
+                    magicService.guardarPartida(juego,
+                        onSuccess = {
+                            runOnUiThread {
+                                Toast.makeText(this, "Partida guardada con éxito", Toast.LENGTH_SHORT).show()
+                            }
+                            dialog.dismiss()
+                        },
+                        onFailure = {
+                            runOnUiThread {
+                                Toast.makeText(this, "Error al guardar la partida", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    )
+                } else {
+                    Toast.makeText(this, "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
 
     private fun configurarMenuJugador(jugador: Int, cantidad: Int) {
         val idBtn = resources.getIdentifier("btn_menu_jugador$jugador", "id", packageName)

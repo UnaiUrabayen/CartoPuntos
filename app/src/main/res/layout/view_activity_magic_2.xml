@@ -203,8 +203,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/jugador_2"
                 android:background="@drawable/fondo_negro_transparente"
+                android:text="@string/jugador_2"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -229,9 +229,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/fondo_negro_transparente"
                     android:gravity="center"
                     android:text="@string/puntosJug2"
-                    android:background="@drawable/fondo_negro_transparente"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
