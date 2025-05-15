@@ -129,6 +129,7 @@ class Activity_usuario : AppCompatActivity() {
         btnBack.setOnClickListener {
             finish()
         }
+
     }
 
     private fun actualizarContador() {
@@ -165,4 +166,5 @@ class Activity_usuario : AppCompatActivity() {
             }
         )
     }
+
 }

@@ -7,104 +7,120 @@
     android:layout_height="match_parent"
     android:background="@color/cp_light_primary"
     tools:context=".Acitivityes.Activity_escogerJuego">
-    <!-- Titulo -->
+
+    <!-- Botón de menú (esquina superior izquierda) -->
+    <ImageButton
+        android:id="@+id/btn_menu_info"
+        android:layout_width="62dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/menu_de_indromacion"
+        android:src="@drawable/ic_info_outline_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Título -->
     <TextView
         android:id="@+id/tv_tituloCartoPuntos"
         android:layout_width="273dp"
         android:layout_height="45dp"
-        android:layout_marginStart="74dp"
         android:layout_marginTop="54dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginBottom="16dp"
-        android:allowUndo="true"
         android:lineSpacingExtra="8sp"
         android:text="@string/carto_puntos"
         android:textAlignment="center"
         android:textColor="@color/cp_light_text"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Línea separadora -->
     <View
         android:id="@+id/view"
         android:layout_width="200dp"
         android:layout_height="1dp"
-        android:layout_marginStart="70dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="90dp"
         android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintTop_toBottomOf="@id/tv_tituloCartoPuntos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tituloCartoPuntos" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Texto explicativo -->
     <TextView
         android:id="@+id/tv_explicativo"
-        android:layout_width="355dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="34dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/selecciona_el_juego_al_que_deseas_jugar"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="19sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imb_magic"
-        android:layout_width="186dp"
-        android:layout_height="402dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="40dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic"
-        android:scaleType="fitXY"
+    <!-- Botón Magic dentro de CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imb_mus"
+        app:layout_constraintEnd_toStartOf="@+id/card_mus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo"
-        app:srcCompat="@mipmap/magic_the_gathering_logo" />
+        app:layout_constraintTop_toBottomOf="@id/tv_explicativo">
 
-    <ImageButton
-        android:id="@+id/imb_mus"
-        android:layout_width="186dp"
-        android:layout_height="402dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="40dp"
-        android:adjustViewBounds="true"
-        android:background="@mipmap/tapete_mus"
-        android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus"
-        android:scaleType="fitXY"
+        <ImageButton
+            android:id="@+id/imb_magic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="@string/boton_que_te_dejara_juagar_a_magic"
+            android:scaleType="fitXY"
+            app:srcCompat="@mipmap/magic_the_gathering_logo" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón Mus dentro de CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_mus"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imb_magic"
-        app:layout_constraintTop_toBottomOf="@+id/tv_explicativo" />
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/tv_explicativo">
 
+        <ImageButton
+            android:id="@+id/imb_mus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="@string/boton_que_te_dejara_juagar_al_mus"
+            android:scaleType="fitXY"
+            app:srcCompat="@mipmap/tapete_mus" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón de usuario (esquina superior derecha) -->
     <ImageView
         android:id="@+id/imgb_btn_usuario"
-        android:layout_width="61dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="352dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="11dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/boton_que_te_lleva_al_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/account_circle_24px"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/account_circle_24px" />
-
-
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

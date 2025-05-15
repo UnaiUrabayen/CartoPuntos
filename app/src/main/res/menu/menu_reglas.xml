@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/reglas_mus" android:title="@string/reglas_del_mus"/>
+    <item android:id="@+id/reglas_magic" android:title="@string/reglas_de_magic"/>
+</menu>

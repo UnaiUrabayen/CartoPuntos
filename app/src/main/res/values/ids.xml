@@ -3,4 +3,5 @@
     <item name="recyclerViewPlantillas" type="id" />
 
     <item name="tvTitulo" type="id" />
+    <item name="btn_menu_info" type="id" />
 </resources>

@@ -114,4 +114,7 @@
     <string name="retomar">Retomar</string>
     <string name="borrar">Borrar</string>
     <string name="da_o_por_comandante">Daño por comandante</string>
+    <string name="menu_de_indromacion">menu de indromacion</string>
+    <string name="reglas_del_mus">Reglas del Mus</string>
+    <string name="reglas_de_magic">Reglas de Magic</string>
 </resources>
