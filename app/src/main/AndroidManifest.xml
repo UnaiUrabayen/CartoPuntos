@@ -27,10 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
-        <activity
-            android:name=".Utils.MenuDialogFragment"
-            android:exported="false" />
-        <!-- SplashActivity como la actividad principal -->
+
         <activity
             android:name=".Acitivityes.SplashActivity"
             android:exported="true"
@@ -50,10 +47,7 @@
             android:name=".Acitivityes.CrearPlantillaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Model.Service.ObtnerPlantilla"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Acitivityes.Activity_mus"
             android:exported="false"
@@ -84,11 +78,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

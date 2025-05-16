@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         app:columnCount="3"
         app:rowCount="4"
-        android:orientation="horizontal">
+        app:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_d2"
